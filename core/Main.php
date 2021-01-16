@@ -8,6 +8,9 @@ class Main
     public Router $router;
     public static $main;
     public static string $rootPath;
+    public View $view;
+    public Response $response;
+    // public ?Controller $controller = null;
     
 
 
@@ -16,26 +19,29 @@ class Main
         self::$rootPath = $conf['rootPath'];
         self::$main = $this;
         $this->request = new Request();
-        $this->router = new Router($this->request);
+        $this->response = new Response();
+        $this->router = new Router($this->request, $this->response);
+        $this->view = new View($this->request);
+       
+        
     }
 
     public function run()
     {
         try {
-
-            
             $this->router->resolve();
-         
+            
         } catch (\Exception $e) {
-            echo $e->getcode();
+            $this->response->setStatusCode($e->getCode());
+            
+            $this->view->renderView([
+                'code'=>$e->getCode(),
+                'message'=> $e->getMessage(),
+            ], 'error');
         }
         
     }
 
-    public function test()
-    {
-        return "hello test main";
-    }
 
     
 

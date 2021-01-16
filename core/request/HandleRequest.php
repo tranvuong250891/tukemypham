@@ -16,7 +16,7 @@ abstract class HandleRequest
 
     public function __construct()
     {
-       
+        $this->request();
         $this->setPathCli();
         $this->setPath();
     }
@@ -47,7 +47,6 @@ abstract class HandleRequest
 
     public function getPath()
     {
-        
         return  $this->handledPath ?? '/';
 
     }

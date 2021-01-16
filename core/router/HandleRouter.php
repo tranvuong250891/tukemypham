@@ -7,28 +7,32 @@ use main\core\Request;
 use main\core\Test;
 use main\core\exception\NotFoundException;
 
-abstract class HandleRouter
+abstract class HandleRouter extends AuthRouter
 {
 
-    protected string $controller;
+    
     protected string $method = 'index';
     protected array $params = [] ;
-    protected string $path = '' ;
-
+    protected static string $path = '' ;
+    protected static $callback = '';
     abstract protected function routes() : array;
-    abstract protected function request() : object;
+    abstract public function request() :object;
 
+    public function getPath() :string
+    {
+       return $this->request()->method();
+    }
     
 
-
+    
     public function setController()
     {
-        
-        $callback = $this->routes()[$this->request->method()][$this->path] ?? false;
-       
-        return $callback;
+        $router = $this->routes();
+     
+        return  $router;
 
     }
+
 
 
 

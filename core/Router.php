@@ -6,17 +6,21 @@ use main\core\router\HandleRouter;
 
 class Router extends HandleRouter
 {
-    protected static array $routes;
+    public static array $routes = [];
     public Request $request;
-
+    public Response $response;
+    public static string $uri;
+    
     protected function routes() :array
     {
         return  self::$routes;
     }
 
-    public function __construct(Request $request)
+    public function __construct(Request $request, Response $response)
     {
+        $this->response = $response;
         $rootPath = Main::$rootPath;
+       
         foreach(scandir($rootPath. '/routes') as $file ){
             if($file === '.' || $file === '..' ){
                 continue;
@@ -24,14 +28,10 @@ class Router extends HandleRouter
             include_once($rootPath.'/routes/'. $file);
         };
         $this->request = $request;
-
-        $this->path = $request->getPath();
-        
+        parent::$path = $request->getPath();
     }
 
-
-
-    protected function request(): object
+    public function request() :object
     {
        return $this->request;
     }
@@ -46,21 +46,31 @@ class Router extends HandleRouter
        self::$routes['post'][$path] = $callback;
     }
 
-    public function resolve()
+    public static function addRoutes(string $path, $callback)
     {
-        if($this->setController() === false){
-            throw new NotFoundException();
+        self::$routes['style'][$path] = $callback;
+    }
+    
+    public function resolve()
+    { 
+        $callback = $this->setController();
+        $callback = $callback[$this->request->method()][parent::$path] ?? false;
+        $style = $this->setController()['style'][parent::$path];
+
+        if(is_string($style)){
+            echo $style;
+            return; 
         }
 
-        call_user_func($this->setController());
+        if($callback === false){
+            throw new NotFoundException();
+        }
+        
+        if(is_array($callback)){
+            $controller = new $callback[0]($this->request, $this->response);
+            return $controller->{$callback[1]}();
+        }
 
     }
-
-    public function test()
-    {
-        echo "test router";
-    }
-
-
 
 }

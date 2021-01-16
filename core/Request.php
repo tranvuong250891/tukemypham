@@ -8,13 +8,14 @@ class Request extends HandleRequest
 
     public function request(): string
     {
-       return  $_SERVER['REQUEST_URI'] ?? '/';
-    }
+        $uri = $_SERVER['REQUEST_URI'];
+        if(substr_count($uri,'/') > 3){
+            exit();
+            die();
+        };
 
-    // public function __construct()
-    // {
-        
-    // }
+        return  $uri ?? '/';
+    }
 
     public function isPost()
     {
