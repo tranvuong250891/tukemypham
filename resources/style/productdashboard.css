@@ -1,0 +1,33 @@
+#product_insert {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  #product_insert table {
+    border: 1px solid black; }
+    #product_insert table th {
+      border: 1px solid black; }
+    #product_insert table td {
+      border: 1px solid black; }
+      #product_insert table td img {
+        height: 5rem; }
+  #product_insert #form_insert {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid red; }
+    #product_insert #form_insert input,
+    #product_insert #form_insert textarea,
+    #product_insert #form_insert button {
+      border: 1px solid black;
+      font-size: 2rem;
+      padding: 0.5rem;
+      margin: 1rem; }
+    #product_insert #form_insert button {
+      cursor: pointer; }
+    #product_insert #form_insert h1 {
+      text-align: center; }
+    #product_insert #form_insert a {
+      font-size: 2rem;
+      text-align: right; }
+
+/*# sourceMappingURL=productdashboard.css.map */

@@ -1,0 +1,291 @@
+#show-register {
+  background-color: white;
+  color: #0062cc;
+}
+
+.focus {
+  color: #0062cc;
+  border: 1px solid;
+}
+
+.model {
+  display: none;
+  position: fixed;
+  z-index: 2000;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.4);
+  padding-top: 60px;
+}
+
+#ctn-register {
+  background-color: black;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding-bottom: 3rem;
+  color: white;
+}
+
+#ctn-register button:hover {
+  border: 1px solid #0062cc;
+}
+
+#ctn-register .header-register {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  position: relative;
+}
+
+#ctn-register .header-register button {
+  background-color: inherit;
+  border: none;
+  border-bottom: 1px solid #aaaaaa;
+}
+
+#ctn-register .header-register .hover-button {
+  border-bottom-style: none;
+  border-left: 1px solid blue;
+  border-right: 1px solid blue;
+  border-top: 3px solid blue;
+}
+
+#ctn-register .header-register #select-form-close {
+  position: absolute;
+  display: block;
+  top: 0;
+  right: 0;
+}
+
+#ctn-register .header-register #select-form-close:hover {
+  background-color: white;
+  color: #0062cc;
+  border: none;
+}
+
+#ctn-register #form-login {
+  display: block;
+}
+
+#ctn-register #form-login a {
+  float: right;
+  margin-bottom: 1rem;
+  text-decoration: none;
+  color: white;
+  cursor: pointer;
+}
+
+#ctn-register #form-login a:hover {
+  color: #0062cc;
+}
+
+#ctn-register #form-sign-up {
+  display: none;
+}
+
+#ctn-register #form-forgot-pass {
+  display: none;
+}
+
+#ctn-register #footer-register {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+#ctn-register #footer-register button {
+  width: 48%;
+}
+
+#ctn-register #footer-register h3 {
+  text-align: center;
+  margin: .5rem;
+  margin-top: 1rem;
+  -webkit-box-flex: 100%;
+      -ms-flex: 100%;
+          flex: 100%;
+}
+
+#ctn-register #footer-register i {
+  margin: auto;
+}
+
+#ctn-register #footer-register i svg {
+  width: 0.81rem;
+}
+
+.animate {
+  -webkit-animation: animatezoom 0.6s;
+  animation: animatezoom 0.6s;
+}
+
+@-webkit-keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+  }
+}
+
+@keyframes animatezoom {
+  from {
+    -webkit-transform: scale(0);
+            transform: scale(0);
+  }
+  to {
+    -webkit-transform: scale(1);
+            transform: scale(1);
+  }
+}
+
+.form {
+  width: 100%;
+  margin: auto;
+}
+
+.form h1 {
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  font-weight: 600;
+}
+
+.form .form-group {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.form .form-group i {
+  border: 2px solid;
+  border-left: none;
+  text-align: center;
+  padding: .5rem;
+}
+
+.form .form-group input {
+  border: 2px solid;
+  border-right: none;
+  -webkit-box-flex: 99;
+      -ms-flex: 99;
+          flex: 99;
+}
+
+.form .form-group span {
+  color: red;
+  -webkit-box-flex: 100%;
+      -ms-flex: 100%;
+          flex: 100%;
+  margin-top: .3rem;
+  margin-bottom: 1rem;
+}
+
+.form .form-group ::-webkit-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form .form-group :-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form .form-group ::-ms-input-placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form .form-group ::placeholder {
+  color: rgba(255, 255, 255, 0.4);
+}
+
+.form button {
+  width: 100%;
+  color: #0062cc;
+  background-color: white;
+}
+
+.form button:hover {
+  background-color: #0062cc;
+  color: white;
+  border: none;
+}
+
+@media (max-width: 740px) {
+  .form {
+    width: 90%;
+    margin: auto;
+  }
+  #ctn-register {
+    width: 95%;
+    margin: 2rem auto;
+  }
+  #ctn-register #footer-register {
+    width: 90%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+  .form {
+    width: 80%;
+    margin: auto;
+  }
+  #ctn-register {
+    width: 60%;
+    margin: 2rem auto;
+  }
+  #ctn-register #footer-register {
+    width: 80%;
+    margin: auto;
+  }
+}
+
+@media (min-width: 1024px) {
+  #ctn-register {
+    width: 40%;
+    margin: 3rem auto;
+  }
+  #ctn-register #footer-register {
+    width: 80%;
+    margin: auto;
+  }
+  .form {
+    width: 80%;
+    margin: auto;
+  }
+  .form button {
+    padding: 1rem;
+  }
+}

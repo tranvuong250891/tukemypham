@@ -12,13 +12,16 @@ class HomeController extends Controller
 {
     public function __construct()
     {
-       $this->helper('css');
+        
 
     }
 
     public function index()
     {
-        $this->render([], 'home');
+        $this->render([
+            'name'=>'Vuong',
+            'title'=> 'tilte',
+        ], 'product');
     }
 
     public function update()
@@ -28,12 +31,21 @@ class HomeController extends Controller
 
     public function store()
     {
-
+        
     }
 
-    public function ok()
+    public function insert()
     {
-        return "ok";
+        
     }
 
+    public function deytroy()
+    {
+
+    }
+
+    public function test()
+    {
+
+    }
 }

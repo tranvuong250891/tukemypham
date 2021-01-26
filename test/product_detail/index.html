@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../lib/reset.css">
+    <link rel="stylesheet" href="../lib/lib.css">
+    <link rel="stylesheet" href="../lib/fontawesome/css/all.min.css">
+    <link rel="stylesheet" href="./productDetail.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="content-body" class="ctn-row">
+        <div id="ctn-menu" class="ctn-col"></div>
+        <div id="ctn-content-product" class="ctn-row">
+            <div class="slide-product">
+                <div class="show-img" style="background-image: url('../img/elsumaffia.jpg');">
+                    <!-- <img src="../img/elsumaffia.jpg" id="show-slide-product" alt=""> -->
+                </div>
+                <div class="select-img ctn-row">
+                    <div onclick="showProduct(this)" style="background-image: url('../img/hayate.jpg');"></div>
+                    <div onclick="showProduct(this)" style="background-image: url('../img/rocker.jpg');"></div>
+                    <div onclick="showProduct(this)" style="background-image: url('../img/elsumaffia.jpg');"></div>
+                    <div onclick="showProduct(this)" style="background-image: url('../img/fernik.jpg');"></div>
+                    <div onclick="showProduct(this)" style="background-image: url('../img/yord.jpg');"></div>
+                </div>
+            </div>
+            <div class="content-product">
+                <h1>Name Product</h1>
+                <div>
+                    <h2>gia ban: <span>300$</span></h2>
+
+                    <h3>mổ tả: sản phẩm chất lượng số 1 việt nam ngon bổ rẻ đọc kỹ hướng dẫn sữ dụng để được sữ dụng đúng cách
+                    </h3>
+                    <div class="price-product">
+                        <h2>số lượng: </h2>
+                        <div class="ctn-row center">
+                            <button onclick="addQty('+')">+</button>
+                            <input type="number" id="qty-product" value="1">
+                            <button>-</button>
+                        </div>
+
+                    </div>
+                    <div class="action-product ctn-row">
+                        <button class="ctn-row center"><i class="fas fa-cart-plus"></i>thêm vào giỏ hàng</button>
+                        <button class="ctn-row center"><i class="fas fa-share-alt"></i>bổ quả sẽ </button>
+                        <button class="ctn-row center"><i class="far fa-heart"></i></button>
+                    </div>
+                    <div class="footer-product ctn-row">
+                        <div>
+                            <i class="fas fa-shipping-fast"><span>Nhanh Chóng</span></i>
+                        </div>
+                        <div>
+                            <i class="fas fa-user-shield"><span>An toàn</span> </i>
+                        </div>
+                        <div>
+                            <i class="fas fa-hand-holding-usd"><span>Tiết Kiện</span></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="taps-info">
+                <div class="tap">
+                    <ul>
+                        <li class="tablink tap-active" onclick="openPage('chitiet', this)"><a>Chi tiết</a></li>
+                        <li class="tablink" onclick="openPage('thongtin', this)"><a>Thông Tin</a></li>
+                        <li class="tablink" onclick="openPage('danhgia', this)"><a>Đánh giá</a></li>
+                    </ul>
+                </div>
+                <div id="chitiet" class="tabcontent">
+                    <h1>name product</h1>
+                    <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita fugit aperiam accusantium animi deserunt officia suscipit sit earum dolorem quos, dicta asperiores doloremque excepturi sequi? Sunt quos veritatis necessitatibus illum
+                        nesciunt. Quaerat sapiente deleniti pariatur ad error culpa dolor ab voluptas accusamus. Impedit, fugit numquam sint repellendus dolorem veritatis est sit excepturi, quis consequuntur dolore? Rerum sapiente cum excepturi nisi accusamus,
+                        saepe libero recusandae voluptas at in ducimus fugit consectetur debitis? Autem, quia? Magnam molestiae minima maiores reiciendis enim eaque architecto illum asperiores dolores porro exercitationem consequatur quibusdam, alias
+                        dolor consequuntur earum mollitia sed dolorum necessitatibus recusandae laboriosam quis ab. </p>
+                </div>
+                <div id="thongtin" class="tabcontent">
+                    <h1>
+                        <h1>thong tin</h1>
+                        <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita fugit aperiam accusantium animi deserunt officia suscipit sit earum dolorem quos, dicta asperiores doloremque excepturi sequi? Sunt quos veritatis necessitatibus
+                            illum nesciunt. Quaerat sapiente deleniti pariatur ad error culpa dolor ab voluptas accusamus. Impedit, fugit numquam sint repellendus dolorem veritatis est sit excepturi, quis consequuntur dolore? Rerum sapiente cum excepturi
+                            nisi accusamus, saepe libero recusandae voluptas at in ducimus fugit consectetur debitis? Autem, quia? Magnam molestiae minima maiores reiciendis enim eaque architecto illum asperiores dolores porro exercitationem consequatur
+                            quibusdam, alias dolor consequuntur earum mollitia sed dolorum necessitatibus recusandae laboriosam quis ab. </p>
+                    </h1>
+                </div>
+                <div id="danhgia" class="tabcontent ">
+                    <form class="review-form" method="post" id="review-form">
+
+                        <!-- star rating -->
+                        <div class="container-star">
+                            <span>Khách hàng đánh giá: </span>
+                            <div class="star-rating">
+                                <input type="radio" name="star" id="star1"><label class=" star" for="star1" onclick="star(1, this)"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="star" id="star2"><label class=" star" for="star2" onclick="star(2, this)"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="star" id="star3"><label class=" star" for="star3" onclick="star(3, this)"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="star" id="star4"><label class=" star" for="star4" onclick="star(4, this)"><i class="fas fa-star"></i></label>
+                                <input type="radio" name="star" id="star5"><label class=" star" for="star5" onclick="star(5, this)"><i class="fas fa-star"></i></label>
+                            </div>
+                        </div>
+                        <!-- end star rating -->
+
+                        <div class="name">
+                            <span>Họ Tên:</span>
+                            <input type="text" name="name">
+                        </div>
+                        <div class="email">
+                            <span>Email:</span>
+                            <input type="email" name="email">
+                        </div>
+                        <div class="name">
+                            <span>Đánh Giá:</span>
+                            <textarea name="detail" id="review_field"></textarea>
+                        </div>
+                        <button>Gữi đánh giá</button>
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    </div>
+    <script src="./productDetail.js"></script>
+</body>
+
+</html>.

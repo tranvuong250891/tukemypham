@@ -1,0 +1,40 @@
+#service {
+    background-color: #f48220;
+    display: block;
+    margin-top: 3rem;
+    .container-service {
+        display: flex;
+        align-items: stretch;
+        width: 95%;
+        margin: auto;
+        .item {
+            display: flex;
+            flex-grow: 1;
+            font-size: 1.5rem;
+            align-items: center;
+            justify-items: center;
+            margin: 2rem 0;
+            color: white;
+            i {}
+            h3 {
+                text-align: center;
+            }
+        }
+        .two {
+            border-right: 1px solid white;
+            border-left: 1px solid white;
+        }
+    }
+}
+
+@media (max-width:768px) {
+    #service {
+        .item {
+            padding: 1rem;
+        }
+        h3 {
+            font-size: 1rem;
+            margin-top: .5rem;
+        }
+    }
+}

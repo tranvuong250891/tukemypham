@@ -1,0 +1,203 @@
+#content-detail .container-info1 {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; }
+  #content-detail .container-info1 .slide-info {
+    border: 1px solid red;
+    width: 40%;
+    position: relative; }
+    #content-detail .container-info1 .slide-info img {
+      width: 100%;
+      display: none; }
+    #content-detail .container-info1 .slide-info button {
+      position: absolute;
+      font-size: 2rem;
+      top: 40%;
+      background-color: none;
+      cursor: pointer;
+      background: gray;
+      opacity: .5;
+      border: none;
+      padding: 1rem;
+      outline: inherit; }
+    #content-detail .container-info1 .slide-info button:hover {
+      opacity: 1;
+      background-color: black;
+      color: white; }
+    #content-detail .container-info1 .slide-info .slide-cursor {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      border: 1px solid yellow; }
+      #content-detail .container-info1 .slide-info .slide-cursor img {
+        width: 25%;
+        display: block;
+        opacity: 0.5;
+        cursor: pointer; }
+      #content-detail .container-info1 .slide-info .slide-cursor img:hover {
+        opacity: 1;
+        transition: all .5s;
+        -webkit-transition: all .5s;
+        -moz-transition: all .5s;
+        -ms-transition: all .5s;
+        -o-transition: all .5s; }
+  #content-detail .container-info1 .content-info {
+    width: 58%;
+    border: 1px solid green;
+    display: flex;
+    flex-direction: column;
+    flex-direction: none;
+    margin: 0;
+    padding: 0; }
+    #content-detail .container-info1 .content-info h1 {
+      text-align: center;
+      margin: 0;
+      color: black;
+      width: 100%; }
+    #content-detail .container-info1 .content-info .quality {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-around; }
+      #content-detail .container-info1 .content-info .quality h2 {
+        color: red;
+        width: 50%;
+        margin-right: 1rem;
+        text-align: center;
+        font-size: 2rem; }
+      #content-detail .container-info1 .content-info .quality .number {
+        width: 50%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center; }
+        #content-detail .container-info1 .content-info .quality .number span {
+          color: black;
+          font-size: 2rem; }
+        #content-detail .container-info1 .content-info .quality .number input {
+          font-size: 2rem;
+          background-color: none;
+          border: 1px solid black;
+          outline: inherit;
+          padding: 0;
+          margin: 0;
+          width: 50%; }
+    #content-detail .container-info1 .content-info .action {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between; }
+      #content-detail .container-info1 .content-info .action button {
+        width: 50%;
+        padding: .5rem;
+        font-size: 1rem;
+        margin: 1rem;
+        cursor: pointer;
+        background-color: #F48220;
+        cursor: pointer;
+        border: none;
+        outline: inherit;
+        color: white; }
+      #content-detail .container-info1 .content-info .action button:hover {
+        opacity: .8; }
+    #content-detail .container-info1 .content-info .social button {
+      padding: .5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      background-color: #360ee9;
+      cursor: pointer;
+      border: none;
+      outline: inherit;
+      color: white; }
+    #content-detail .container-info1 .content-info .social button:hover {
+      opacity: 0.6; }
+    #content-detail .container-info1 .content-info .taps-info {
+      border: 1px solid red; }
+      #content-detail .container-info1 .content-info .taps-info .tap ul {
+        border: 1px solid black;
+        display: flex;
+        flex-direction: row; }
+        #content-detail .container-info1 .content-info .taps-info .tap ul li {
+          border: 1px solid black;
+          padding: 1rem;
+          cursor: pointer;
+          list-style: none; }
+          #content-detail .container-info1 .content-info .taps-info .tap ul li a {
+            text-decoration: none;
+            background-color: none; }
+      #content-detail .container-info1 .content-info .taps-info #chitiet {
+        display: none; }
+      #content-detail .container-info1 .content-info .taps-info #danhgia {
+        display: block; }
+      #content-detail .container-info1 .content-info .taps-info #thongtin {
+        display: none; }
+#content-detail .container-info2 {
+  font-size: 1rem; }
+
+.active {
+  opacity: 1 !important; }
+
+.prev {
+  right: 0; }
+
+.star-rating {
+  display: flex;
+  background-color: none; }
+  .star-rating input {
+    display: none; }
+  .star-rating label {
+    display: block;
+    cursor: pointer;
+    background: none;
+    cursor: pointer; }
+    .star-rating label i {
+      font-size: 2rem; }
+    .star-rating label i:hover {
+      color: #F48220; }
+
+.star-click {
+  color: #F48220; }
+
+#danhgia form .container-star {
+  display: flex;
+  flex-direction: row;
+  margin: 1rem auto;
+  width: 100%; }
+  #danhgia form .container-star span {
+    width: 40%;
+    font-size: 1rem; }
+  #danhgia form .container-star div {
+    display: flex;
+    flex-direction: row; }
+    #danhgia form .container-star div i {
+      font-size: 1rem; }
+#danhgia form div {
+  display: flex;
+  flex-direction: column; }
+  #danhgia form div input {
+    padding: .5rem;
+    margin: .5rem 0; }
+  #danhgia form div span {
+    font-size: 1rem;
+    font-weight: bold; }
+  #danhgia form div textarea {
+    padding: .5rem;
+    margin: 1rem 0;
+    width: 100%;
+    height: 100px; }
+#danhgia form button {
+  padding: .5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  background-color: #360ee9;
+  cursor: pointer;
+  border: none;
+  outline: inherit;
+  color: white; }
+#danhgia form button:hover {
+  opacity: .5; }
+
+.tapActive {
+  background-color: #F48220; }
+
+/*# sourceMappingURL=detail.css.map */

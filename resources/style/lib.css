@@ -1,0 +1,115 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.bor {
+    border: 1px solid;
+}
+
+button {
+    background-color: inherit;
+    /* Green */
+    border: 1px solid;
+    color: inherit;
+    padding: .5rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+    outline: inherit;
+    font-weight: 600;
+}
+
+input {
+    background-color: inherit;
+    color: inherit;
+    border: 1px solid;
+    padding: .5rem;
+    outline: inherit;
+}
+
+.btn-facebook {
+    display: none;
+    display: block;
+    background-color: white;
+    color: #0062cc;
+}
+
+.btn-facebook:hover {
+    background-color: #0062cc;
+    color: white;
+    border: none;
+}
+
+.btn-google {
+    display: none;
+    display: block;
+    background-color: white;
+    color: red;
+}
+
+.btn-google:hover {
+    background-color: red;
+    color: white;
+    border: none;
+}
+
+i {
+    overflow: hidden;
+    display: flex;
+    float: left;
+}
+
+.ctn-row {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.ctn-row.center {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctn-row.left {
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.ctn-row .w-25 {
+    flex: 0 0 25%;
+}
+
+.ctn-row .w-75 {
+    flex: 0 0 75%;
+}
+
+.ctn-col {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
+
+.ctn-col.center {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+}
+
+.ctn-col.left {
+    text-align: center;
+    align-items: center;
+    justify-content: flex-start;
+}
+
+.ctn-col .w-25 {
+    flex: 0 0 25%;
+}
+
+.ctn-col .w-75 {
+    flex: 0 0 75%;
+}

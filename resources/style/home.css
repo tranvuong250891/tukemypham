@@ -1,0 +1,34 @@
+#home_container {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  #home_container .slide1 {
+    display: block;
+    background-color: yellow;
+    width: 100%;
+    height: 400px;
+    margin-bottom: 2rem;
+    position: relative;
+    overflow: hidden; }
+    #home_container .slide1 img {
+      width: 100%;
+      height: 200%; }
+    #home_container .slide1 .left {
+      left: 0; }
+    #home_container .slide1 .right {
+      right: 0; }
+    #home_container .slide1 button {
+      font-size: 2rem;
+      position: absolute;
+      top: 50%;
+      background-color: none;
+      cursor: pointer;
+      background: gray;
+      opacity: .5;
+      border: none;
+      padding: 1rem;
+      outline: inherit; }
+    #home_container .slide1 button:hover {
+      opacity: 1; }
+
+/*# sourceMappingURL=home.css.map */

@@ -1,0 +1,161 @@
+@media (max-width: 739px) {
+  #order-body {
+    font-size: 7px;
+    width: 90%;
+  }
+  .form-cart {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 769) {
+  #order-body {
+    font-size: 16px;
+  }
+}
+
+.form-cart {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 2em;
+}
+
+.form-cart label {
+  margin-bottom: .5em;
+}
+
+.form-cart input {
+  font-size: 1em;
+  padding: 0;
+  border: none;
+  border-bottom: 1px dotted;
+  color: #000000;
+}
+
+.form-cart textarea {
+  width: 100%;
+}
+
+#order-body {
+  margin: auto;
+  padding: 1em 0;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+
+#order-body h1 {
+  font-size: 2em;
+  font-weight: 600;
+  text-align: center;
+  display: block;
+}
+
+#order-body button {
+  float: right;
+  margin-top: 2em;
+}
+
+#order-body button:hover {
+  background-color: rgba(0, 0, 0, 0.7);
+  color: white;
+}
+
+#order-body .date {
+  text-align: right;
+  margin-bottom: 2em;
+}
+
+#order-body #cart-content {
+  width: 100%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#order-body #cart-content h1 {
+  width: 100%;
+  font-size: 2em;
+  display: block;
+  text-align: left;
+}
+
+#order-body #cart-content a {
+  color: #0062cc;
+  margin-left: auto;
+}
+
+#order-body #cart-content a:hover {
+  text-decoration: underline solid;
+}
+
+#order-body #cart-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#order-body #cart-content table tr td {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1em;
+  border: 1px solid white;
+}
+
+#order-body #cart-content table tr td button {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+}
+
+#order-body #cart-content table tr td input {
+  width: 3em;
+  height: 2em;
+  border: none;
+  all: unset;
+}
+
+#order-body #cart-content table tr td input:focus {
+  display: none;
+}
+
+#order-body #cart-content table tr th {
+  background-color: rgba(0, 0, 0, 0.6);
+  border: 1px solid;
+  padding: 1em;
+  color: white;
+}
+
+.name-product {
+  text-align: left;
+}
+
+.name-product div {
+  align-items: center;
+  border: #000000;
+  flex-wrap: nowrap;
+}
+
+.name-product div button {
+  margin-left: auto;
+}
+
+.name-product span {
+  margin: 0 1em;
+}
+
+.name-product img {
+  width: 4em;
+  height: 4em;
+}
+
+.subtotal-product {
+  text-align: right;
+}
+
+.qty-product {
+  text-align: center;
+}
+
+.qty-product div {
+  flex-wrap: nowrap;
+}

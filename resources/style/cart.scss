@@ -1,0 +1,120 @@
+@media (max-width: 768px) {
+    #cart-body {
+        font-size: 7px;
+    }
+}
+
+@media (min-width: 769) {
+    #cart-body {
+        font-size: 16px;
+    }
+}
+
+#cart-body {
+    width: 100%;
+    display: block;
+    padding: 1em 0;
+    background-color: rgba($color: #000000, $alpha: .06);
+    #cart-header {
+        width: 100%;
+        font-size: 1.5em;
+        font-weight: 600;
+        margin: 1em auto;
+        h1 {
+            text-align: center;
+        }
+    }
+    #cart-content {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        flex-wrap: wrap;
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            tr {
+                td {
+                    background-color: rgba($color: #000000, $alpha: .2);
+                    padding: 1em;
+                    border: 1px solid white;
+                    button {
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        width: 2em;
+                        height: 2em;
+                        background-color: gray;
+                    }
+                    input {
+                        width: 3em;
+                        height: 2em;
+                        text-align: center;
+                        border-width: 1px 0px 1px 0px;
+                    }
+                }
+                th {
+                    background-color: #0062cc;
+                    border: 1px solid;
+                    padding: 1em;
+                    color: white;
+                }
+            }
+        }
+        a {
+            margin: 1rem 0rem;
+            font-size: 1rem;
+            text-align: center;
+            display: flex;
+            align-items: center;
+            color: #0062cc;
+            &:first-of-type {
+                margin-left: auto;
+                margin-right: 1rem;
+                i {
+                    margin-right: .5em;
+                }
+                &:hover {
+                    text-decoration: underline #0062cc solid;
+                    i {
+                        text-decoration: underline #0062cc solid;
+                    }
+                }
+            }
+            &:last-of-type:hover {
+                background-color: #0062cc;
+                color: white;
+            }
+        }
+    }
+}
+
+.name-product {
+    text-align: left;
+    div {
+        // justify-content: left;
+        align-items: center;
+        border: #000000;
+        flex-wrap: nowrap;
+        button {
+            margin-left: auto;
+        }
+    }
+    span {
+        margin: 0 1em;
+    }
+    img {
+        width: 4em;
+        height: 4em;
+    }
+}
+
+.subtotal-product {
+    text-align: right;
+}
+
+.qty-product {
+    text-align: center;
+    div {
+        flex-wrap: nowrap;
+    }
+}

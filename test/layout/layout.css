@@ -1,0 +1,29 @@
+.layout {
+    width: 100%;
+    display: block;
+}
+
+.layout.wide {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.row {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+
+/* Tablet ~ PC */
+
+@media (min-width: 1024px) and (max-width: 1236px) {
+    .wide {
+        width: 984px;
+    }
+}
+
+@media (min-width: 740px) and (max-width: 1023px) {
+    .wide {
+        width: 644px;
+    }
+}

@@ -8,22 +8,24 @@ class Controller
    
     public string $action = '';
     protected static string $path;
-
-    public function getPath()
+    public function __construct()
     {
-        self::$path = Main::$main->request->getPath();
+        $this->helper();
+      
     }
 
     public function render($params = [], $content, $layout = false)
     {
         
-        return Main::$main->view->renderView($params, $content, $layout);
+        Main::$main->view->renderView($params, $content, $layout);
+        
        
     }
 
-    public function helper( string $extention)
+    public function helper()
     {
-       
+      
+       Main::$main->view->helper();
     }
 
 

@@ -1,0 +1,28 @@
+#cart_address {
+  display: block;
+  width: 100%; }
+  #cart_address button {
+    padding: 1rem;
+    border-radius: 5px 5px 5px 5px;
+    background-color: #f48220;
+    color: black;
+    display: block;
+    cursor: pointer;
+    margin: 1rem auto; }
+  #cart_address button:hover {
+    opacity: .8; }
+  #cart_address label {
+    padding: 1rem;
+    float: left;
+    width: 20%; }
+  #cart_address input {
+    padding: .5rem;
+    width: 50%;
+    margin-bottom: 1rem; }
+  #cart_address h2 {
+    width: 100%;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 1rem; }
+
+/*# sourceMappingURL=cartorder.css.map */

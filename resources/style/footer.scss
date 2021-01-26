@@ -1,0 +1,59 @@
+#footer {
+    background-color: #f0f0f0;
+    .container {
+        display: flex;
+        flex-direction: row;
+        margin: 1rem auto;
+        justify-content: space-between;
+        border: 1px solid;
+        flex-wrap: wrap;
+        .item1 {
+            h3 {
+                span {}
+            }
+        }
+        .item2 {
+            h3 {}
+            span {}
+        }
+        .item3 {
+            h3 {}
+            span {}
+        }
+        .item4 {
+            h3 {}
+            span {}
+            form {
+                border: 1px solid;
+                width: 90%;
+                font-size: 1rem;
+                position: relative;
+                input {
+                    border: none;
+                }
+                button {
+                    position: absolute;
+                    right: 0px;
+                    top: 0;
+                    border: 0px 0px 0px 1px;
+                }
+            }
+        }
+    }
+    .design {
+        text-align: center;
+        padding: 1rem;
+        margin-top: 1rem
+    }
+}
+
+.item {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    align-content: space-around;
+}
+
+@media (max-width:768px) {
+    #footer {}
+}

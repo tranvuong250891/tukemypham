@@ -1,12 +1,16 @@
 <?php
 
-use main\core\Main;
 
+use main\core\Main;
 $rootPath =  dirname( __DIR__);
+
+
 
 include_once $rootPath . '/vendor/autoload.php';
 $dotenv = Dotenv\Dotenv::createImmutable($rootPath);
 $dotenv->load();
+
+
 
 
 $conf = [
@@ -19,6 +23,7 @@ $conf = [
 ];
 
 new Main($conf);
+
 
 
 Main::$main->run();

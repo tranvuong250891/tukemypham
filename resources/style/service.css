@@ -1,0 +1,51 @@
+#service {
+  background-color: #f48220;
+  display: block;
+  margin-top: 3rem;
+}
+
+#service .container-service {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+  width: 95%;
+  margin: auto;
+}
+
+#service .container-service .item {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  font-size: 1.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  justify-items: center;
+  margin: 2rem 0;
+  color: white;
+}
+
+#service .container-service .item h3 {
+  text-align: center;
+}
+
+#service .container-service .two {
+  border-right: 1px solid white;
+  border-left: 1px solid white;
+}
+
+@media (max-width: 768px) {
+  #service .item {
+    padding: 1rem;
+  }
+  #service h3 {
+    font-size: 1rem;
+    margin-top: .5rem;
+  }
+}

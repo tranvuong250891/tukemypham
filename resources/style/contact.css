@@ -1,0 +1,59 @@
+#contact {
+  width: 100%;
+  display: flex;
+  flex-direction: column; }
+  #contact iframe {
+    width: 100%;
+    display: block;
+    height: 400px;
+    margin-bottom: 2rem; }
+  #contact .container-contact {
+    display: flex;
+    flex-direction: row;
+    font-size: 1.5rem; }
+    #contact .container-contact .contact-detail {
+      width: 50%;
+      color: white; }
+      #contact .container-contact .contact-detail div {
+        margin: 1rem; }
+        #contact .container-contact .contact-detail div i {
+          text-align: center;
+          margin-right: 0.5rem;
+          width: 1rem; }
+    #contact .container-contact .form-contact {
+      border: 1px solid black;
+      width: 40%; }
+      #contact .container-contact .form-contact h1 {
+        width: 100%;
+        text-align: center; }
+      #contact .container-contact .form-contact form {
+        display: flex;
+        flex-direction: column; }
+        #contact .container-contact .form-contact form input {
+          margin: .5rem;
+          font-size: 1rem;
+          background-color: none;
+          border: none;
+          padding: .5rem;
+          outline: inherit; }
+        #contact .container-contact .form-contact form textarea {
+          margin: .5rem;
+          font-size: 1rem;
+          background-color: none;
+          border: none;
+          padding: .5rem;
+          outline: inherit; }
+        #contact .container-contact .form-contact form button {
+          font-size: 1rem;
+          color: white;
+          cursor: pointer;
+          background-color: black;
+          border: none;
+          padding: 0.5rem;
+          margin-left: .5rem;
+          width: 50%;
+          outline: inherit; }
+        #contact .container-contact .form-contact form button:hover {
+          opacity: 0.5; }
+
+/*# sourceMappingURL=contact.css.map */

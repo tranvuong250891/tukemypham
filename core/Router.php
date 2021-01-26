@@ -67,8 +67,9 @@ class Router extends HandleRouter
         }
         
         if(is_array($callback)){
+            // echo $callback[0]; 
             $controller = new $callback[0]($this->request, $this->response);
-            return $controller->{$callback[1]}();
+            return $controller->{$callback[1]}($this->request, $this->response);
         }
 
     }

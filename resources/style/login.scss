@@ -1,0 +1,225 @@
+#show-register {
+    background-color: white;
+    color: #0062cc;
+}
+
+.focus {
+    color: #0062cc;
+    border: 1px solid;
+}
+
+.model {
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.4);
+    padding-top: 60px;
+}
+
+#ctn-register {
+    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 3rem;
+    color: white;
+    button {
+        &:hover {
+            border: 1px solid #0062cc;
+        }
+    }
+    .header-register {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        button {
+            background-color: inherit;
+            border: none;
+            border-bottom: 1px solid #aaaaaa;
+        }
+        .hover-button {
+            border-bottom-style: none;
+            border-left: 1px solid blue;
+            border-right: 1px solid blue;
+            border-top: 3px solid blue;
+        }
+        #select-form-close {
+            position: absolute;
+            display: block;
+            top: 0;
+            right: 0;
+        }
+        #select-form-close:hover {
+            background-color: white;
+            color: #0062cc;
+            border: none;
+        }
+    }
+    #form-login {
+        display: block;
+        a {
+            float: right;
+            margin-bottom: 1rem;
+            text-decoration: none;
+            color: white;
+            cursor: pointer;
+        }
+        a:hover {
+            color: #0062cc;
+        }
+    }
+    #form-sign-up {
+        display: none;
+    }
+    #form-forgot-pass {
+        display: none;
+    }
+    #footer-register {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        button {
+            width: 48%;
+        }
+        h3 {
+            text-align: center;
+            margin: .5rem;
+            margin-top: 1rem;
+            flex: 100%;
+        }
+        i {
+            margin: auto;
+            svg {
+                width: 0.81rem;
+            }
+        }
+    }
+}
+
+.animate {
+    -webkit-animation: animatezoom 0.6s;
+    animation: animatezoom 0.6s
+}
+
+@-webkit-keyframes animatezoom {
+    from {
+        -webkit-transform: scale(0)
+    }
+    to {
+        -webkit-transform: scale(1)
+    }
+}
+
+@keyframes animatezoom {
+    from {
+        transform: scale(0)
+    }
+    to {
+        transform: scale(1)
+    }
+}
+
+.form {
+    width: 100%;
+    margin: auto;
+    h1 {
+        font-size: 1.5rem;
+        margin: 1rem auto;
+        text-align: center;
+        font-weight: 600;
+    }
+    .form-group {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: stretch;
+        flex-wrap: wrap;
+        i {
+            border: 2px solid;
+            border-left: none;
+            text-align: center;
+            padding: .5rem;
+        }
+        input {
+            border: 2px solid;
+            border-right: none;
+            flex: 99;
+        }
+        span {
+            color: red;
+            flex: 100%;
+            margin-top: .3rem;
+            margin-bottom: 1rem;
+        }
+         ::placeholder {
+            color: rgba(255, 255, 255, 0.4);
+        }
+    }
+    button {
+        width: 100%;
+        color: #0062cc;
+        background-color: white;
+    }
+    button:hover {
+        background-color: #0062cc;
+        color: white;
+        border: none;
+    }
+}
+
+@media (max-width: 740px) {
+    .form {
+        width: 90%;
+        margin: auto;
+    }
+    #ctn-register {
+        width: 95%;
+        margin: 2rem auto;
+        #footer-register {
+            width: 90%;
+            margin: auto;
+        }
+    }
+}
+
+@media (min-width: 740px) and(max-width: 1023px) {
+    .form {
+        width: 80%;
+        margin: auto;
+    }
+    #ctn-register {
+        width: 60%;
+        margin: 2rem auto;
+        #footer-register {
+            width: 80%;
+            margin: auto;
+        }
+    }
+}
+
+@media (min-width: 1024px) {
+    #ctn-register {
+        width: 40%;
+        margin: 3rem auto;
+        #footer-register {
+            width: 80%;
+            margin: auto;
+        }
+    }
+    .form {
+        width: 80%;
+        margin: auto;
+        button {
+            padding: 1rem;
+            // border: none;
+        }
+    }
+}

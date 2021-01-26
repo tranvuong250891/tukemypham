@@ -1,0 +1,136 @@
+@media (max-width: 768px) {
+  #cart-body {
+    font-size: 7px;
+  }
+}
+
+@media (min-width: 769) {
+  #cart-body {
+    font-size: 16px;
+  }
+}
+
+#cart-body {
+  width: 100%;
+  display: block;
+  padding: 1em 0;
+  background-color: rgba(0, 0, 0, 0.06);
+}
+
+#cart-body #cart-header {
+  width: 100%;
+  font-size: 1.5em;
+  font-weight: 600;
+  margin: 1em auto;
+}
+
+#cart-body #cart-header h1 {
+  text-align: center;
+}
+
+#cart-body #cart-content {
+  width: 90%;
+  margin: auto;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+#cart-body #cart-content table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+#cart-body #cart-content table tr td {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1em;
+  border: 1px solid white;
+}
+
+#cart-body #cart-content table tr td button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 2em;
+  height: 2em;
+  background-color: gray;
+}
+
+#cart-body #cart-content table tr td input {
+  width: 3em;
+  height: 2em;
+  text-align: center;
+  border-width: 1px 0px 1px 0px;
+}
+
+#cart-body #cart-content table tr th {
+  background-color: #0062cc;
+  border: 1px solid;
+  padding: 1em;
+  color: white;
+}
+
+#cart-body #cart-content a {
+  margin: 1rem 0rem;
+  font-size: 1rem;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  color: #0062cc;
+}
+
+#cart-body #cart-content a:first-of-type {
+  margin-left: auto;
+  margin-right: 1rem;
+}
+
+#cart-body #cart-content a:first-of-type i {
+  margin-right: .5em;
+}
+
+#cart-body #cart-content a:first-of-type:hover {
+  text-decoration: underline #0062cc solid;
+}
+
+#cart-body #cart-content a:first-of-type:hover i {
+  text-decoration: underline #0062cc solid;
+}
+
+#cart-body #cart-content a:last-of-type:hover {
+  background-color: #0062cc;
+  color: white;
+}
+
+.name-product {
+  text-align: left;
+}
+
+.name-product div {
+  align-items: center;
+  border: #000000;
+  flex-wrap: nowrap;
+}
+
+.name-product div button {
+  margin-left: auto;
+}
+
+.name-product span {
+  margin: 0 1em;
+}
+
+.name-product img {
+  width: 4em;
+  height: 4em;
+}
+
+.subtotal-product {
+  text-align: right;
+}
+
+.qty-product {
+  text-align: center;
+}
+
+.qty-product div {
+  flex-wrap: nowrap;
+}
