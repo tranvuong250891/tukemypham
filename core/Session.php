@@ -1,9 +1,14 @@
 <?php
 namespace main\core;
 
+use main\core\session\CartSession;
+
 class Session 
 {
     protected const FLASH_KEY = 'flash_message';
+    protected const CART = 'cart';
+
+
 
     public function __construct()
     {
@@ -13,6 +18,7 @@ class Session
             $flashMessage['removed'] = true;
         }
         $_SESSION[self::FLASH_KEY] = $flashMessages;
+       
     }
 
     public function setFlash($key, $message)
@@ -40,7 +46,7 @@ class Session
 
     public function remove($key)
     {
-        unset ($_SESSION[$key]);
+        unset($_SESSION[$key]);
     }
 
     public function __destruct()

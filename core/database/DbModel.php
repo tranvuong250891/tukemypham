@@ -3,6 +3,7 @@ namespace main\core\database;
 
 use main\core\Main;
 use main\core\model\Model;
+use main\core\Test;
 
 abstract class DbModel extends Model
 {
@@ -36,17 +37,18 @@ abstract class DbModel extends Model
 
     public function findOne($where) 
     {
-
+       
         $tableName = static::tableName();
 
         $attributes = array_keys($where);
+       
         
         $sql = "SELECT * FROM $tableName WHERE ". implode("AND", array_map(fn($attr)=> "$attr = :$attr", $attributes));
         $statement = self::prepare($sql);
         foreach($where as $attr => $value){
-            
             $statement->bindValue(":$attr", $value);
         }
+       
        
 
         $statement->execute();
@@ -56,9 +58,10 @@ abstract class DbModel extends Model
 
     }
 
-    public function prepare($sql)
+    public  function prepare($sql)
     {
-        return Main::$main->db->pdo->prepare($sql);
+        
+        return Main::$main->db->prepare($sql);
     }
 
     public function getAll() 

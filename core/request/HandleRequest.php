@@ -1,6 +1,8 @@
 <?php 
 namespace main\core\request;
 
+use main\core\Test;
+
 /* 
     Xu ly request cho Router ;
 */
@@ -34,10 +36,14 @@ abstract class HandleRequest
     public function setPath()
     {
        
-        $this->path = preg_replace('/[^A-Za-z0-9\-\.\/]/', '', $this->pathCli);
-       
+        $this->path = preg_replace('/[^A-Za-z0-9\-\.\/\?\=\&]/', '', $this->pathCli);
         if($this->path === $this->pathCli){
+            $position = strpos($this->path, '?');
+            if($position !== false){
+                $this->path =  substr($this->path, 0 , $position); 
+                }
             $this->handledPath = $this->path;
+            
         } else {
             echo "loi ky tu dac biet trong duong dan"."<br>";
             exit;
@@ -49,6 +55,10 @@ abstract class HandleRequest
     {
         return  $this->handledPath ?? '/';
 
+    }
+
+    public function get(){
+        return $_GET;
     }
 
     

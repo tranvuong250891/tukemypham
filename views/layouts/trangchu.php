@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/reset.css">
-    
     <link rel="stylesheet" href="/style/lib.css">
+   <link rel="stylesheet" href="/style/order.css">
     <link rel="stylesheet" href="/style/login.css">
     <link rel="stylesheet" href="/style/navbar.css">
     <link rel="stylesheet" href="/style/menu.css">
@@ -41,8 +41,9 @@
     <script src="/js/windowclick.js"></script>
     <script src="/js/navbar.js"></script>
     <script src="/js/login.js"></script>
-    <script type="module" src="/js/product.js"></script>
-    <!-- <script type="module" src="/js/cart1.js"></script> -->
+    <script type="module" src='/js/cart.js'></script>
+
+   
     
 </body> 
 

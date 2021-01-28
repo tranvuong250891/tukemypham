@@ -22,4 +22,5 @@ Router::get('/register', [AuthController::class, 'register']);
 
 // TEST
 Router::get('/test', [TestController::class, 'index' ]);
+Router::get('/destroy', [TestController::class, 'destroy' ]);
 

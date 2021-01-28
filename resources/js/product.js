@@ -2,7 +2,7 @@ import * as data from './data/index.js';
 
 
 
-var cartUrl = '/cart/store/';
+var cartUrl = '/cart/store';
 
 var productURL = '/apiproduct';
 
@@ -14,7 +14,7 @@ var showQtyCart = document.querySelector('#cart-nav span');
 
 const CtnProduct = document.querySelector('#ctn-product');
 
-console.log(CtnProduct);
+// console.log(CtnProduct);
 
 function product(dataproduct) {
     let html = '';
@@ -49,9 +49,9 @@ function product(dataproduct) {
 
         actionProduct[i].querySelector('button').onclick = function() {
             let id = this.value;
-            data.getApi(cartUrl + id, cart);
-
+            data.getApi(cartUrl + "?id="+id, cart);
             function cart(dataCart) {
+                
                 showQtyCart.innerHTML = `(${dataCart.count})`;
 
             }

@@ -18,7 +18,7 @@ class TestController extends Controller
 
     public function index()
     {
-        $this->render(['model' => 'hello'], 'error', 'login');
+        echo "test";
     }
 
     public function update()
@@ -36,9 +36,11 @@ class TestController extends Controller
         
     }
 
-    public function deytroy()
+    public function destroy()
     {
-
+        
+        session_destroy();
+        echo "xoa session";
     }
 
     public function test()

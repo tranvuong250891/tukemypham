@@ -20,15 +20,17 @@ class Main
 
     public function __construct(array $conf)
     {
-        $this->session = new Session();
+       
         self::$rootPath = $conf['rootPath'];
         self::$main = $this;
+        $this->db = new Database($conf['db']);    
+        $this->session = new Session();
         $this->request = new Request();
         $this->response = new Response();
         $this->router = new Router($this->request, $this->response);
         $this->view = new View($this->request);
         $this->controller = new Controller($this->request);
-        $this->db = new Database($conf['db']);    
+        
     }
 
     public function run()

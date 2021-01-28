@@ -18,7 +18,7 @@
 
     </div>
 
-    <a href="./cart" id="cart-nav" class=" ctn-row center">
+    <a href="/cart" id="cart-nav" class=" ctn-row center">
         <i class="fas fa-shopping-cart"></i>
         <span>(số)</span>
     </a>
