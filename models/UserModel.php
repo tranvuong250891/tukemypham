@@ -14,6 +14,12 @@ class UserModel extends DbModel
     public int $status = self::STATUS_INACTIVE;
     public string $pass = '';
     public string $repass = '';
+    public string $img = 'elsu.jpg';
+    public int $phone = 123456789 ;
+    public $create_at  = '';
+    public $note = '';
+    public $access = '';
+
 
     public function __construct()
     {
@@ -23,7 +29,7 @@ class UserModel extends DbModel
     public function attributes(): array
     {
         return [
-            'email', 'name', 'status', 'pass'
+            'email', 'name', 'status', 'pass', 'create_at', 'img'
         ];
     }
 
@@ -57,6 +63,9 @@ class UserModel extends DbModel
 
     public function save()
     {
+        $this->create_at = date('Y/m/d H:i:s');
+
+        $this->name = str_replace('@gmail.com' , '', $this->email);
         $this->status = self::STATUS_INACTIVE;
         $this->pass = password_hash($this->pass, PASSWORD_DEFAULT);
         return parent::save();

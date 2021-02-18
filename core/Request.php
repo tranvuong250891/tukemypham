@@ -38,9 +38,19 @@ class Request extends HandleRequest
             }
         }   
         if($this->method() === 'post'){
-            foreach($_POST as $k => $v){
-                $body[$k] = filter_input(INPUT_POST, $k, FILTER_SANITIZE_SPECIAL_CHARS);
+            if(!$_POST){
+                $data =  json_decode(file_get_contents('php://input')) ?? [];
+                foreach($data as $key => $value) {
+                    $body[$key] = $value;   
+                }
+
+            } else {
+                foreach($_POST as $k => $v){
+                    $body[$k] = filter_input(INPUT_POST, $k, FILTER_SANITIZE_SPECIAL_CHARS);
+                }
             }
+            
+          
         }   
 
         return $body;

@@ -2,6 +2,7 @@
 namespace main\core\request;
 
 use main\core\Test;
+use main\core\Main;
 
 /* 
     Xu ly request cho Router ;
@@ -13,6 +14,8 @@ abstract class HandleRequest
     public string $path;
     public string $pathCli;
     public string $handledPath;
+    public $urlSeo = false;
+    public string $pathApi;
 
     abstract public function request() : string;
 
@@ -21,6 +24,16 @@ abstract class HandleRequest
         $this->request();
         $this->setPathCli();
         $this->setPath();
+        $this->getPath();
+        $path = substr($this->getPath(), 1) ;
+        $this->urlSeo =  Main::$main->db->search('url_seo',['path' => $path]);
+        
+        
+
+        
+       
+        
+
     }
 
     public function setPathCli()
@@ -36,7 +49,7 @@ abstract class HandleRequest
     public function setPath()
     {
        
-        $this->path = preg_replace('/[^A-Za-z0-9\-\.\/\?\=\&]/', '', $this->pathCli);
+        $this->path = preg_replace('/[^A-Za-z0-9\-\.\/\?\=\&\_]/', '', $this->pathCli);
         if($this->path === $this->pathCli){
             $position = strpos($this->path, '?');
             if($position !== false){
@@ -60,6 +73,8 @@ abstract class HandleRequest
     public function get(){
         return $_GET;
     }
+
+    
 
     
 

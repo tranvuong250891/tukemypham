@@ -5,6 +5,7 @@ namespace main\controllers;
 use main\core\Controller;
 use main\core\Main;
 use main\core\Request;
+use main\core\Response;
 use main\core\Test;
 use main\models\UserModel;
 use main\models\LoginModel;
@@ -26,8 +27,9 @@ class ApiUserController extends Controller
         
        
         if($this->model->validate()){
-            $this->result = 'success';
+            
             $this->model->save();
+            $this->result = 'success';
         } else {
             $this->result = ($this->model->errors);
         }
@@ -49,8 +51,8 @@ class ApiUserController extends Controller
         
         if( $model->login() && $model->validate() ){
             $this->result = 'success';
-            Main::$main->session->set('user',  $model->email);
-            
+            // Main::$main->session->set('user',  $model->email);
+
         } else {
             $this->result = ($model->errors);
         }
@@ -59,9 +61,10 @@ class ApiUserController extends Controller
         echo json_encode($this->result);
     }
 
-    public function destroy()
+    public function destroy(Request $request, Response $response)
     {
         session_destroy();
+        $response->redirect('/');
     }
 
 

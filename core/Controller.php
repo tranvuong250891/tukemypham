@@ -18,7 +18,7 @@ class Controller
     {
         
         Main::$main->view->renderView($params, $content, $layout);
-        
+       
        
     }
 
@@ -26,6 +26,11 @@ class Controller
     {
       
        Main::$main->view->helper();
+    }
+
+    public function loginMiddleware()
+    {
+
     }
 
 

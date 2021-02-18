@@ -9,7 +9,7 @@ use main\models\ProductModel;
 
 class CartController extends Controller
 {
-    private const CART = 'cart';
+    public const CART = 'cart';
     protected int $id;
     protected int $qty;
     protected array $carts = [];
@@ -20,7 +20,7 @@ class CartController extends Controller
     {  
         $this->session = Main::$main->session;
         $this->id = $request->getBody()['id'] ?? false;
-        $this->qty = $request->getBody()['qty'] ?? 1; 
+        $this->qty = $request->getBody()['qty'] ?? 0; 
         if( is_array($this->session->get(self::CART))){
             $this->carts = $this->session->get(self::CART);
         }
@@ -29,19 +29,38 @@ class CartController extends Controller
 
     public function index()
     {
-
+        
+        $this->render($this->carts, 'cart.php');
+       
     }
 
     public function update(Request $request)
     {
-        $this->carts[$this->id]['qty'] = $this->qty;
+       
+            $data =  json_decode(file_get_contents('php://input')) ?? [];
+            foreach($data as $key => $value){
+                
+                if($value <= 0){
+                   
+                    unset($this->carts[$key]);
+                    continue;
+                }
+                $this->carts[$key]['qty'] = $value;
+                
+                
+
+            }
+           
     }
 
     public function store()
     {
+        if($this->qty <= 0){
+            $this->qty = 1 ;
+        }
         
         $this->carts[$this->id]['qty'] += $this->qty ;
-
+        
     }
 
     public function show()
@@ -59,16 +78,25 @@ class CartController extends Controller
     {
         $this->carts['count'] = 0;
         $productModel = new ProductModel();
+        
             foreach($this->carts as $id => $cart){
-                if( is_numeric( $id)){
+                
+                if( is_numeric( $id) && $id){
+                   
                     $getModel = $productModel->findOne(['id' => $id]);
-                    $this->carts[$id]['name'] = $getModel->name; 
-                    $this->carts['count'] += $cart['qty']; 
+                    if($getModel){
+                        $this->carts[$id]['name'] = $getModel->name;
+                        $this->carts[$id]['price'] = $getModel->price;
+                        $this->carts[$id]['id'] = $getModel->id;
+                        $this->carts[$id]['img_id'] =  $getModel->img_id;
+                        $this->carts['count'] += $cart['qty']; 
+                    }
+                    
                 }
             }
-            
-            $this->session->set(self::CART, $this->carts);
            
+            $this->session->set(self::CART, $this->carts);
+            
             echo json_encode($this->session->get(self::CART));
     }
 

@@ -21,7 +21,7 @@ class HomeController extends Controller
         $this->render([
             'name'=>'Vuong',
             'title'=> 'tilte',
-        ], 'product');
+        ], 'product.php');
     }
 
     public function update()

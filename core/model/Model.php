@@ -12,13 +12,15 @@ abstract class Model
     public const RULE_PASS = "pass";
     public const RULE_MATCH = "match";
     public const RULE_UNIQUE = "unique";
+    public const RULE_INT = 'int';
+    
     public array $errors = [] ;
 
     public function loadData($data)
     {
         foreach($data as $k => $v){
             if(property_exists($this, $k)){
-                $this->{$k} = $v;
+                $this->{$k} = $v ;
             }
         }
     }
@@ -65,6 +67,12 @@ abstract class Model
                     $this->addErrorForRule($attr, self::RULE_MATCH, $rule);
                 }
 
+                if($ruleName === self::RULE_INT && !is_numeric($value)){
+                    
+                    $this->addErrorForRule($attr, self::RULE_INT);
+                }
+
+
                 if($ruleName === self::RULE_UNIQUE) {
                     $className  = $rule['class'];
                     $uniqueAttr = $rule['attribute'] ?? $attr;
@@ -104,6 +112,7 @@ abstract class Model
     public function errorMessages()
     {
         return [
+            self::RULE_INT => "Day khong phai so ",
             self::RULE_RIQUIRED => "This field is Required",
             self::RULE_EMAIL => "This field must be valid email address",
             self::RULE_MAX => "Max length of this field must be {max}",

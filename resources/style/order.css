@@ -16,8 +16,13 @@
 
 .form-cart {
   width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-direction: column;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
   margin-bottom: 2em;
 }
 
@@ -68,8 +73,11 @@
 #order-body #cart-content {
   width: 100%;
   margin: auto;
+  display: -webkit-box;
+  display: -ms-flexbox;
   display: flex;
-  flex-wrap: wrap;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 #order-body #cart-content h1 {
@@ -85,7 +93,8 @@
 }
 
 #order-body #cart-content a:hover {
-  text-decoration: underline solid;
+  -webkit-text-decoration: underline solid;
+          text-decoration: underline solid;
 }
 
 #order-body #cart-content table {
@@ -101,8 +110,12 @@
 
 #order-body #cart-content table tr td button {
   display: none;
-  align-items: center;
-  justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
   width: 2em;
   height: 2em;
 }
@@ -130,9 +143,12 @@
 }
 
 .name-product div {
-  align-items: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
   border: #000000;
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
 
 .name-product div button {
@@ -157,5 +173,7 @@
 }
 
 .qty-product div {
-  flex-wrap: nowrap;
+  -ms-flex-wrap: nowrap;
+      flex-wrap: nowrap;
 }
+/*# sourceMappingURL=order.css.map */

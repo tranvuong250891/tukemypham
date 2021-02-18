@@ -1,7 +1,7 @@
 <?php
 namespace main\core;
 
-use main\core\exception\NotFoundException;
+use main\core\exceptions\NotFoundException;
 use main\core\router\HandleRouter;
 
 class Router extends HandleRouter
@@ -10,7 +10,9 @@ class Router extends HandleRouter
     public Request $request;
     public Response $response;
     public static string $uri;
-    
+    public $action = false;
+
+
     protected function routes() :array
     {
         return  self::$routes;
@@ -54,21 +56,29 @@ class Router extends HandleRouter
     public function resolve()
     { 
         $callback = $this->setController();
+        // Test::show($callback);       
         $callback = $callback[$this->request->method()][parent::$path] ?? false;
         $style = $this->setController()['style'][parent::$path];
-
         if(is_string($style)){
-            echo $style;
+            echo  $style;
             return; 
         }
+       
+       
+        
+       
 
         if($callback === false){
+            
             throw new NotFoundException();
         }
+
+       
         
         if(is_array($callback)){
-            // echo $callback[0]; 
+            $this->action = $callback[1] ?? false;
             $controller = new $callback[0]($this->request, $this->response);
+
             return $controller->{$callback[1]}($this->request, $this->response);
         }
 

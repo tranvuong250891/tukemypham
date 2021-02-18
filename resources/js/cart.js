@@ -18,7 +18,7 @@ function updateCart(Url, callback, data) {
 }
 
 function handelUpdateCart(data) {
-
+    
     return data;
 };
 var showCartUrl ='/cart/show';
@@ -45,8 +45,11 @@ function showCart(data) {
                 </tr>`;
     var dataCart = Object.values(data);
     if (cartContent) {
+       
         dataCart.forEach(values => {
-            if (typeof values === 'object') {
+            
+            if (typeof values === 'object' && values.img_id) {
+                // console.log(values);
                 html += `<tr class="detail-cart">
                     <td class="name-product">
                         <div class="ctn-row ">
@@ -67,7 +70,7 @@ function showCart(data) {
                         <span>$</span>
                     </td>
                 </tr>`;
-            }
+            } 
             cartContent.innerHTML = html;
         })
         setValueQty(Array.from(document.querySelectorAll('.detail-cart')))
@@ -88,6 +91,8 @@ function setMinust(input) {
     } else {
         input.nextElementSibling.style = "opacity: 1; cursor: pointer;"
     }
+    // console.log( setValueQty(Array.from(document.querySelectorAll('.detail-cart'))));
+   
     updateCart(updateCartUrl, handelUpdateCart, setValueQty(Array.from(document.querySelectorAll('.detail-cart'))));
 }
 
@@ -130,8 +135,10 @@ function showCartCount(data) {
     var deleteCart = document.querySelectorAll('.name-product button')
     deleteCart.forEach(btn => {
         btn.onclick = function() {
+            
             getParent(this, 'tr').querySelector('input').value = 0;
             let valueqty = setValueQty(Array.from(document.querySelectorAll('.detail-cart')));
+            console.log(valueqty);
             updateCart(updateCartUrl, handelUpdateCart, valueqty);
             getParent(this, 'tr').remove();
         }
@@ -145,10 +152,11 @@ function showCartCount(data) {
                     console.log([document.querySelector('table').nextSibling.data = "ok"]);
                     document.querySelector('table').nextSibling.data = "Giỏ Hàng Của Bạn Rỗng ";
                 } else {
-                    window.location = BASEURL + '/order';
+                    window.location = '/order';
                 }
 
             }, setValueQty(Array.from(document.querySelectorAll('.detail-cart'))));
         }
     }
 }
+export  default setValueQty;

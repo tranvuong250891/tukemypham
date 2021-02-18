@@ -7,6 +7,7 @@ use main\core\Main;
 use main\core\Request;
 use main\core\Response;
 use main\core\Test;
+use main\models\OrderModel;
 
 class TestController extends Controller
 {
@@ -18,7 +19,8 @@ class TestController extends Controller
 
     public function index()
     {
-        echo "test";
+    
+
     }
 
     public function update()
@@ -40,7 +42,7 @@ class TestController extends Controller
     {
         
         session_destroy();
-        echo "xoa session";
+        
     }
 
     public function test()

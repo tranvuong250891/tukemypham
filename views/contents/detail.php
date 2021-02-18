@@ -1,20 +1,20 @@
-<link rel="stylesheet" href="<?php echo linkCSS('assets/style/css/detail.css'); ?>">
+<link rel="stylesheet" href="/style/detail.css  ">
 <div id="content-detail">
   <div class="container-info1">
 
     <!-- slide -->
     <div class="slide-info">
-      <img class="show-slide" src="<?php echo linkIMG('fernik.jpg', 'slide')?>" alt="">
-      <img class="show-slide" src="<?php echo linkIMG('yord.jpg', 'slide')?>" alt="">
-      <img class="show-slide" src="<?php echo linkIMG('hayate.jpg', 'slide')?>" alt="">
-      <img class="show-slide" src="<?php echo linkIMG('rocker.jpg', 'slide')?>" alt="">
+      <img class="show-slide" src="" alt="">
+      <img class="show-slide" src="" alt="">
+      <img class="show-slide" src="" alt="">
+      <img class="show-slide" src="" alt="">
       <button class="next" onclick="plusdetail(-1)">&#10094;</button>
       <button class="prev" onclick="plusdetail(1)">&#10095;</button>
       <div class="slide-cursor">
-        <img class="slide-detail " src="<?php echo linkIMG('fernik.jpg', 'slide')?>" onclick="currentSlide(1)" alt="">
-        <img class="slide-detail " src="<?php echo linkIMG('yord.jpg', 'slide')?>" onclick="currentSlide(2)"  alt="">
-        <img class="slide-detail " src="<?php echo linkIMG('hayate.jpg', 'slide')?>" onclick="currentSlide(3)" alt="">
-        <img class="slide-detail " src="<?php echo linkIMG('rocker.jpg', 'slide')?>" onclick="currentSlide(4)" alt="">
+        <img class="slide-detail " src="" onclick="currentSlide(1)" alt="">
+        <img class="slide-detail " src="" onclick="currentSlide(2)"  alt="">
+        <img class="slide-detail " src="" onclick="currentSlide(3)" alt="">
+        <img class="slide-detail " src="" onclick="currentSlide(4)" alt="">
       </div>     
     </div>
     <!--end slide -->
@@ -22,12 +22,12 @@
     <!-- content info -->
     <div class="content-info">
       
-      <h1><?= ( $myData['tuong']['Name']); ?></h1>
+      <h1><?= $name; ?></h1>
     
       
       <div class="quality">
 
-        <h2>Giá Bán: (<?= ( $myData['tuong']['price']); ?>)Đ <?= $myData['tuong']['id']; ?></h2>
+        <h2>Giá Bán: (<?= $price; ?>)Đ <?= $id ?></h2>
 
         <div class="number">
           <span>Số Lượng:</span>
@@ -36,11 +36,11 @@
   
       </div>
       <div class="action">
-        <button class="cart-control" onclick="addCart(<?= $myData['tuong']['id']; ?>)">
+        <button class="cart-control" onclick="addCart(<?= $id ?>)">
           <span>Thêm vào giỏ hàng</span>
           <i class="fas fa-shopping-cart"></i>
         </button>
-       <button onclick="paycart(<?= $myData['tuong']['id']; ?>)">THANH TOÁN NGAY</button>
+       <button onclick="paycart(<?= $id; ?>)">THANH TOÁN NGAY</button>
       </div>
   
       <div class="social">

@@ -7,6 +7,7 @@ use main\core\Test;
 
 abstract class DbModel extends Model
 {
+    public int $primaryKey;
     public function __construct()
     {
         
@@ -31,6 +32,10 @@ abstract class DbModel extends Model
         }
 
         $statement->execute();
+
+       
+        
+
         return true;
         
     }
@@ -41,7 +46,6 @@ abstract class DbModel extends Model
         $tableName = static::tableName();
 
         $attributes = array_keys($where);
-       
         
         $sql = "SELECT * FROM $tableName WHERE ". implode("AND", array_map(fn($attr)=> "$attr = :$attr", $attributes));
         $statement = self::prepare($sql);

@@ -1,5 +1,5 @@
 import * as data from './index.js';
-let productURL1 = BASEURL + '/apiproduct';
+let productURL1 =  '/apiproduct';
 
 // console.log(data.getApi);
 

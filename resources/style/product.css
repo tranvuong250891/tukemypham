@@ -40,11 +40,21 @@ body {
   #ctn-product {
     width: 100%;
     margin: auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   #ctn-product .dt-product:last-child {
     margin-right: auto;
@@ -52,8 +62,14 @@ body {
   }
   #ctn-product .dt-product {
     width: 32%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     border: 1px solid #888888;
     margin-bottom: 1rem;
@@ -68,21 +84,33 @@ body {
     position: relative;
   }
   #ctn-product .dt-product .img-product .show-ac-product {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 100%;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     top: 0px;
     left: 0.5rem;
     position: absolute;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     max-width: 0rem;
     overflow: hidden;
+    -webkit-transition: max-width 0.2s ease-in-out;
     transition: max-width 0.2s ease-in-out;
   }
   #ctn-product .dt-product .img-product .show-ac-product i {
     background-color: #0062cc;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     color: #fff;
     cursor: pointer;
     padding: .5rem;
@@ -103,12 +131,15 @@ body {
     font-weight: bold;
   }
   #ctn-product .dt-product:hover {
-    box-shadow: 5px 5px 5px #aaaaaa;
+    -webkit-box-shadow: 5px 5px 5px #aaaaaa;
+            box-shadow: 5px 5px 5px #aaaaaa;
   }
   #ctn-product .dt-product:hover .img-product {
     background-size: 120% 120%;
   }
   #ctn-product .dt-product:hover .img-product .show-ac-product {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     max-width: 10rem;
   }
@@ -119,9 +150,16 @@ body {
   }
   .pagination-product {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
     margin: auto;
   }
   .pagination-product button {
@@ -137,17 +175,33 @@ body {
     width: 100%;
     margin: auto;
     margin-left: 2px;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: flex-start;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    -webkit-box-pack: justify;
+        -ms-flex-pack: justify;
+            justify-content: space-between;
+    -webkit-box-align: start;
+        -ms-flex-align: start;
+            align-items: flex-start;
   }
   #ctn-product .dt-product {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     border-radius: 10px 10px 10px 10px;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-transition: all 0.2s ease-in-out;
     transition: all 0.2s ease-in-out;
     border: 1px solid #888888;
     margin-bottom: 1rem;
@@ -163,21 +217,33 @@ body {
     position: relative;
   }
   #ctn-product .dt-product .img-product .show-ac-product {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     height: 100%;
-    flex-direction: column;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
     top: 0px;
     left: 0.5rem;
     position: absolute;
-    justify-content: space-around;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
     max-width: 0rem;
     overflow: hidden;
+    -webkit-transition: max-width 0.2s ease-in-out;
     transition: max-width 0.2s ease-in-out;
   }
   #ctn-product .dt-product .img-product .show-ac-product i {
     background-color: #0062cc;
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
-    flex-direction: row;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
     color: #fff;
     cursor: pointer;
     padding: .5rem;
@@ -198,12 +264,15 @@ body {
     font-weight: bold;
   }
   #ctn-product .dt-product:hover {
-    box-shadow: 5px 5px 3px #aaaaaa;
+    -webkit-box-shadow: 5px 5px 3px #aaaaaa;
+            box-shadow: 5px 5px 3px #aaaaaa;
   }
   #ctn-product .dt-product:hover .img-product {
     background-size: 120% 120%;
   }
   #ctn-product .dt-product:hover .img-product .show-ac-product {
+    display: -webkit-box;
+    display: -ms-flexbox;
     display: flex;
     max-width: 10rem;
   }
@@ -222,3 +291,4 @@ body {
     margin-right: 0.5rem;
   }
 }
+/*# sourceMappingURL=product.css.map */

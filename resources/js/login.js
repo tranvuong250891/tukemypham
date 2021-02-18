@@ -1,5 +1,4 @@
 {
-    
     var showRegister = document.querySelector('.show-register');
     var formRegister = document.querySelector('#register');
     var showLogin = document.querySelector('#select-form-login');
@@ -8,6 +7,43 @@
     let checkFocusPass = true;
     let checkFocusRePass = true;
     let check = true;
+
+    registerNav.onclick = function (e){
+        $.ajax({
+            type: 'get',
+            url : '/destroy',
+        })
+        // window.location = '/';
+        
+    }
+
+    let loginUser = function (){
+        $.ajax({
+            url: '/user',
+            type: 'get',
+            data: {
+                
+            },
+            success: function(data, status) {
+                
+                var user = JSON.parse(data);
+                // console.log(user);
+                if(user) {
+                    document.querySelector('.login').style.display = "none";
+                    document.querySelector('.logout').style.display = "flex";
+                    document.querySelector('.logout span').innerHTML = user.email;
+                    // console.log(document.querySelector('.logout span'));
+        
+                } else if(user = false){
+                    
+                } 
+                
+            }
+        });
+    }
+
+    loginUser();
+
     var showContainer = function(elShow) {
 
         let form = document.querySelector(elShow);
@@ -123,13 +159,13 @@
                 console.log(data);
 
                 let nameEmail = JSON.parse(data);
-               
+            //    console.log(data);
                 if (data !== 'null') {
                    
                     document.querySelector('.login').style.display = "none";
                     document.querySelector('.logout').style.display = "flex";
-                    console.log() 
-                    document.querySelector('.logout span').innerHTML = nameEmail;
+                   
+                    // document.querySelector('.logout span').innerHTML = nameEmail;
                 } else {
                    
                     document.querySelector('.login').style.display = "flex";
@@ -195,12 +231,13 @@
             success: function(data, status) {
                 console.log(data);
                 var mess = JSON.parse(data);
-               
+                
                 if (mess === "success") {
                     alert('Đăng nhập thành công');
-
-                    formRegister.style.display = 'none';
+                    // document.querySelector('.logout span').innerHTML = mess.email;
+                    formRegister.style.display = 'block';
                     checkLogin();
+                    location.reload();
 
 
                 } else {
@@ -325,7 +362,7 @@
                     formRegister.querySelector('#form-login').style.display = 'block';
                     formRegister.querySelector('#form-forgot-pass').style.display = 'none';
                     formRegister.querySelector('#form-sign-up').style.display = 'none';
-                    emailLogin.value = valueEmail;
+                    // emailLogin.value = valueEmail;
                 }
 
             }
@@ -338,7 +375,14 @@
         signUp('/apiuser/login', emailSignUp, passSignUp, rePassSignUp);
     }
     
+
+   $
+
     
 
 
 }
+
+
+
+

@@ -13,9 +13,6 @@ class ProductModel extends DbModel
     public string $content = '';
     public string $img_id = '';
 
-
-
-
     public function tableName(): string
     {
         return 'products';

@@ -8,7 +8,7 @@ class View
 {
     protected string  $layout = 'trangchu';
     protected static string $path;
-    
+    public string $content;
     protected string $exFile;
     protected array $componentsForLayout = [];
     
@@ -51,6 +51,7 @@ class View
 
     public function getComponentsForLayout(string $str, string $content, $params =[])
     {
+        $this->content = $content ?? false;
         foreach ($params as $k => $v){
             $$k = $v;
         }
@@ -62,7 +63,8 @@ class View
                 $string = strip_tags($string);
                 ob_start();
                 if($string === 'content'){
-                    include_once Main::$rootPath. "/views/contents/$content.php";
+                    // echo $content;
+                    include_once Main::$rootPath. "/views/contents/$this->content";
                 }
                 if(file_exists(Main::$rootPath. "/views/$string")){
                     include_once Main::$rootPath. "/views/$string";

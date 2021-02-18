@@ -2,7 +2,7 @@
 <h1>PRODUCT</h1>
 <div id='ctn-product'>
     <div class="dt-product">
-        <div class="img-product" style="background-image: url('/img/elsuma.jpg');">
+        <div class="img-product" style="background-image: url('/img/elsu.jpg');">
             <div class="show-ac-product">
                 <i class="fas fa-cart-plus"></i>
                 <i class="far fa-eye"></i>

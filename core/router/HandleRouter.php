@@ -6,6 +6,7 @@ use main\core\Controller;
 use main\core\Request;
 use main\core\Test;
 use main\core\exception\NotFoundException;
+use main\core\Main;
 
 abstract class HandleRouter extends AuthRouter
 {
@@ -22,12 +23,31 @@ abstract class HandleRouter extends AuthRouter
     {
        return $this->request()->method();
     }
-    
+
+
+    public function urlSeo()
+    {
+        
+    }
 
     
     public function setController()
     {
-        $router = $this->routes();
+
+        $urlSeo = $this->request()->urlSeo;
+
+       
+
+        if($urlSeo){
+            $class = $urlSeo->class;
+            $router[$this->request()->method()][$this->request()->path] = [ $class, 'detail'];
+           
+        } else {
+            $router = $this->routes();
+        }
+        
+        // Test::show($router);
+      
      
         return  $router;
 

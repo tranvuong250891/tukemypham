@@ -46,7 +46,7 @@ function product(dataproduct) {
 
     var actionProduct = document.querySelectorAll('.dt-product');
     for (let i = 0; i < actionProduct.length; i++) {
-
+       
         actionProduct[i].querySelector('button').onclick = function() {
             let id = this.value;
             data.getApi(cartUrl + "?id="+id, cart);

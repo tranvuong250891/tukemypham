@@ -20,6 +20,9 @@
         searchIp.onfocus;
     }
 
+   
+
+    
 
     function changeDisplay(display) {
         if (display.matches) {
