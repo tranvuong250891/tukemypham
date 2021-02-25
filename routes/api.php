@@ -1,10 +1,16 @@
 <?php
 
 use main\controllers\api\CommentApi;
+use main\controllers\api\imgApi;
 use main\controllers\ApiUserController;
 use main\core\Router;
 use main\controllers\ProductController;
 use main\controllers\CartController;
+use main\controllers\HomeController;
+use main\core\upload;
+
+Router::get('/test', [HomeController::class, 'test']);
+
 
 //Login
 Router::post('/apiuser/login', [ApiUserController::class, 'login']);
@@ -35,6 +41,16 @@ Router::get('/cart/show', [CartController::class, 'show']);
 Router::post('/comment', [CommentApi::class, 'index']);
 
 Router::get('/comment/show', [CommentApi::class, 'show']);
+
+
+//IMG
+Router::get('/api/img', [imgApi::class, 'index']);
+
+//UPLOAD
+Router::post('/upload', [upload::class, 'upload']);
+Router::get('/upload', [upload::class, 'upload']);
+
+
 
 
 

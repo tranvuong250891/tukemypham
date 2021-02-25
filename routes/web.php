@@ -25,7 +25,7 @@ Router::get('/user', [AuthController::class, 'user']);
 //PRODUCT
 
 // TEST
-Router::get('/test', [TestController::class, 'index' ]);
+Router::get('/ok', [TestController::class, 'index' ]);
 Router::get('/destroy', [TestController::class, 'destroy' ]);
 
 //ORDER

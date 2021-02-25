@@ -1,0 +1,128 @@
+<link rel="stylesheet" href="/style/dashboard/product.css">
+
+<div class="modal ctn-img" >
+    
+    <div class="ctn-modal">
+        <button class="close-ctn-modal">&#215;</button>
+        <div class="form-add-lib">
+            
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <button class="btn-upload">them anh vao thu vien</button>
+           
+          
+        </div>
+        <div class="ctn-all-img">
+            
+        </div>
+
+
+    </div>
+</div>
+
+<div class="form show-product">
+    <h1>Danh muc san pham</h1>
+    <div>
+        <table>
+            <tr>
+                <th>stt</th>
+                <th>ten san pham</th>
+                <th>anh san pham</th>
+                <th>gia ban</th>
+                <th>sua</th>
+                <th>xoa</th>
+            </tr>
+
+           
+            <tr>
+                <td>stt</td>
+                <td>ten san pham</td>
+                <td>anh san pham</td>
+                <td>gia ban</td>
+                <td><button>edit</button></td>
+                <td><button>xoa</button></td>
+
+            </tr>
+            <tr>
+                <td>stt</td>
+                <td>ten san pham</td>
+                <td>anh san pham</td>
+                <td>gia ban</td>
+                <td><button>edit</button></td>
+                <td><button>xoa</button></td>
+
+            </tr>
+            <tr>
+                <td>stt</td>
+                <td>ten san pham</td>
+                <td>anh san pham</td>
+                <td>gia ban</td>
+                <td><button>edit</button></td>
+                <td><button>xoa</button></td>
+
+            </tr>
+           
+           
+        </table>
+    </div>
+</div>
+
+<div class="form insert-product">
+    <h1>them san pham moi</h1>
+    <div class="form-group">
+        <label for="">ten san pham:</label>
+        <input type="text" name="" id="">
+    </div>
+    <div class="form-group">
+        <label for="">anh</label>
+        <input  type="text" name="" id="get-name-img">
+        <div class="show-img-select">
+
+        </div>
+        <button id="show-modal-img">chon anh</button>
+    </div>
+    <div class="form-group">
+        <label for="">gia san pham:</label>
+        <input type="text"  id="price-product">
+    </div>
+    <div class="form-group">
+        <label for="">Duong dan seo:</label>
+        <input type="text"  id="url-product">
+    </div>
+    <div class="form-group">
+        <label for="">noi dung:</label>
+        <textarea  name="" id="content-product"></textarea>
+    </div>
+
+    <button class="btn">Them san pham</button>
+</div>
+
+
+<script type="module" src="/js/dashboard/product.js">
+
+</script>
+
+<script>
+    let getNameImg = document.querySelector('#get-name-img');
+    let ctnSelectImg = $('.show-img-select')[0];
+    // console.log([ctnSelectImg])
+    function remove(el){
+        let nameImg = el.parentElement.getAttribute('data-value')+',';
+      
+       console.log( nameImg);
+       getNameImg.value = getNameImg.value.replace(nameImg, '');
+       (el.parentElement.remove())
+    }
+    function selectImg(el) {
+        
+        let urlImg = el.getAttribute('style');
+        let nameImg = el.getAttribute('data-value');
+        // console.log(typeof urlImg);
+        let divImg = `<div class="detail-img"  data-value="${nameImg}" style="${urlImg}">
+            <button class="close" onclick="remove(this)">&#10006;</button>
+            </div>`;
+        ctnSelectImg.innerHTML += divImg;
+        getNameImg.value += nameImg +',';
+        el.remove();
+        
+    }
+</script>

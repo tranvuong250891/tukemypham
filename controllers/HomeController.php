@@ -46,6 +46,10 @@ class HomeController extends Controller
 
     public function test()
     {
-
+        
+        $this->render([
+            'name'=>'Vuong',
+            'title'=> 'tilte',
+        ], '/dashboard/content.html');
     }
 }

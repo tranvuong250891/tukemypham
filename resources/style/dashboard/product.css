@@ -1,0 +1,167 @@
+.show-product {
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.show-product tr {
+  width: 100%;
+}
+
+.show-product th {
+  background-color: #0062cc;
+  color: white;
+}
+
+.show-product td, .show-product th {
+  padding: 1rem;
+  border: 1px solid white;
+}
+
+.show-product .img-product {
+  background-size: 100% 100%;
+}
+
+.show-product .td-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+
+.insert-product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.insert-product .form-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  margin: 1rem;
+}
+
+.insert-product .form-group label {
+  font-weight: bold;
+}
+
+.insert-product .form-group input {
+  border: 1px solid #0062cc;
+}
+
+.insert-product .form-group button {
+  width: 10%;
+}
+
+.insert-product .form-group .show-img-select {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  margin: .5rem;
+}
+
+.ctn-img button {
+  padding: 1rem;
+}
+
+.ctn-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.ctn-img button {
+  float: right;
+}
+
+.ctn-img .ctn-all-img {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.detail-img {
+  width: 6rem;
+  height: 6rem;
+  background-size: 100% 100%;
+  margin: .5rem;
+  cursor: pointer;
+}
+
+.detail-img button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 2rem;
+  height: 2rem;
+  position: relative;
+  left: 5rem;
+  top: -1rem;
+  border-radius: 1rem 1rem 1rem 1rem;
+  color: red;
+}
+
+.ctn-modal {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.ctn-modal button {
+  margin-left: auto;
+}
+
+.ctn-modal .form-add-lib {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: stretch;
+      -ms-flex-align: stretch;
+          align-items: stretch;
+}
+
+.ctn-modal .form-add-lib button {
+  margin-left: .5rem;
+}
+/*# sourceMappingURL=product.css.map */

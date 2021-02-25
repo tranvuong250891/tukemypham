@@ -1,19 +1,17 @@
 import * as data from './index.js';
-let productURL1 =  '/apiproduct';
-
-// console.log(data.getApi);
-
-data.getApi(productURL1, product1);
-
-function product1(data, callback) {
-
+var show ={
+    heloo:'hdasdh'
 };
+function getshowproduct(data){
+    return data;
 
 
+}
+
+data.api({
+    method: 'get',
+    url: '/apiproduct',
+}, getshowproduct);
 
 
-
-
-
-// console.log(product1);
-export default product1;
+export default getshowproduct;
