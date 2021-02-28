@@ -1,5 +1,5 @@
 <link rel="stylesheet" href="/style/dashboard/product.css">
-
+<script src="//cdn.ckeditor.com/4.16.0/standard/ckeditor.js"></script>
 <div class="modal ctn-img" >
     
     <div class="ctn-modal">
@@ -70,41 +70,56 @@
     <h1>them san pham moi</h1>
     <div class="form-group">
         <label for="">ten san pham:</label>
-        <input type="text" name="" id="">
+        <input type="text" name="" id="name-product">
+        <span class="mess-rule">error</span>
     </div>
     <div class="form-group">
         <label for="">anh</label>
-        <input  type="text" name="" id="get-name-img">
-        <div class="show-img-select">
+        <input  type="text" name="" id="img-product">
 
+        <div class="show-img-select">
         </div>
         <button id="show-modal-img">chon anh</button>
+        <span class="mess-rule">error</span>
     </div>
     <div class="form-group">
         <label for="">gia san pham:</label>
         <input type="text"  id="price-product">
+        <span class="mess-rule">error</span>
+
     </div>
     <div class="form-group">
         <label for="">Duong dan seo:</label>
         <input type="text"  id="url-product">
+        <span class="mess-rule">error</span>
     </div>
     <div class="form-group">
         <label for="">noi dung:</label>
-        <textarea  name="" id="content-product"></textarea>
+        <textarea  name="editor" id="editor"></textarea>
+        <span class="mess-rule">error</span>
     </div>
 
-    <button class="btn">Them san pham</button>
+    <button class="btn-add-product">Them san pham</button>
 </div>
 
+<script  >
+    
 
-<script type="module" src="/js/dashboard/product.js">
 
-</script>
+    // console.log(contentProduct);
+
+
+
+  </script>
+
+
+
+<script type="module" src="/js/dashboard/product.js"></script>
 
 <script>
-    let getNameImg = document.querySelector('#get-name-img');
-    let ctnSelectImg = $('.show-img-select')[0];
-    // console.log([ctnSelectImg])
+    let getNameImg = document.querySelector('#img-product');
+    let ctnSelectImg =  document.querySelector('.show-img-select');
+  
     function remove(el){
         let nameImg = el.parentElement.getAttribute('data-value')+',';
       
@@ -116,7 +131,7 @@
         
         let urlImg = el.getAttribute('style');
         let nameImg = el.getAttribute('data-value');
-        // console.log(typeof urlImg);
+       
         let divImg = `<div class="detail-img"  data-value="${nameImg}" style="${urlImg}">
             <button class="close" onclick="remove(this)">&#10006;</button>
             </div>`;
@@ -126,3 +141,4 @@
         
     }
 </script>
+

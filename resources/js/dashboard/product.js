@@ -1,7 +1,16 @@
 import * as data from '../data/index.js';
 
+var editor = CKEDITOR.replace( 'editor',{
+    filebrowserBrowseUrl: '/upload/show',
+    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
+  } );
+
+  
+
+
 var valueProduct = document.querySelector('.show-product table')
 
+document.querySelector('.modal').style.display = 'none';
 
 
 
@@ -82,7 +91,6 @@ btnUpload.onclick = function(e){
     $.ajax({
         type: "post",
         url: "/upload",
-      
         contentType: false,
         processData: false,
         data: formData,
@@ -93,6 +101,44 @@ btnUpload.onclick = function(e){
     });
         
 }
+
+let btnAddProduct = document.querySelector('.btn-add-product')
+
+btnAddProduct.onclick = function (){
+    let nameProduct = document.querySelector('#name-product')
+    let priceProduct = document.querySelector('#price-product')
+    let imgProduct = document.querySelector('#img-product')
+    let urlProduct = document.querySelector('#url-product')
+   
+    var contentProduct = CKEDITOR.instances.editor.getData();
+
+
+    // console.log(imgProduct.value, nameProduct.value, urlProduct.value, contentProduct)
+    $.ajax({
+        type: "post",
+        url: "/insertproduct",
+       
+        data: {
+            nameProduct: nameProduct.value,
+            priceProduct: priceProduct.value ,
+            imgProduct:imgProduct.value ,
+            urlProduct: urlProduct.value ,
+            contentProduct: contentProduct ,
+        },
+        success: function(response){
+           console.log(response);
+        
+        }
+    });
+    
+
+
+
+}
+
+    
+   
+
 
 
 

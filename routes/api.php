@@ -23,6 +23,9 @@ Router::get('/destroy', [ApiUserController::class, 'destroy']);
 //PRODUCT
 Router::get('/apiproduct', [ProductController::class, 'index']);
 Router::get('/detail', [ProductController::class, 'show']);
+Router::post('/insertproduct', [ProductController::class, 'insert']);
+Router::get('/insertproduct', [ProductController::class, 'insert']);
+
 
 
 
@@ -49,6 +52,8 @@ Router::get('/api/img', [imgApi::class, 'index']);
 //UPLOAD
 Router::post('/upload', [upload::class, 'upload']);
 Router::get('/upload', [upload::class, 'upload']);
+Router::get('/upload/show', [upload::class, 'show']);
+
 
 
 

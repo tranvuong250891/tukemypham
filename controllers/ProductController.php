@@ -6,6 +6,7 @@ use main\core\Request;
 use main\core\Response;
 use main\core\Test;
 use main\models\ProductModel;
+use main\core\middlewares\AuthMiddleware;
 
 class ProductController extends Controller
 {
@@ -14,6 +15,8 @@ class ProductController extends Controller
 
     public function __construct(Request $request)
     {
+        $this->login = new AuthMiddleware(['insert']);
+        $this->login->execute();
         $this->id = $request->getBody()['id'] ?? '';
         $this->model = new ProductModel();
        
@@ -21,7 +24,7 @@ class ProductController extends Controller
 
     public function index()
     {
-        // Test::show($this->model->getAll());
+    
 
         echo json_encode($this->model->getAll());
     }
@@ -51,7 +54,15 @@ class ProductController extends Controller
         }
         
         $this->render([], 'productDetail.html');
-        // Test::show($data);
+        
+    }
+
+    public function insert(Request $request)
+    {
+        
+        if($request->isPost()){
+            Test::show($request->getBody());
+        }
     }
 
 

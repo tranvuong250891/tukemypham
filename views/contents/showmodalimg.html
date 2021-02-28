@@ -1,0 +1,115 @@
+<link rel="stylesheet" href="/style/dashboard/product.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+<div class="modal ctn-img" >
+    <input class="show-name-url-img" type="text">
+    <div class="ctn-modal">
+        <button class="close-ctn-modal">&#215;</button>
+        <div class="form-add-lib">
+            
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <button class="btn-upload">them anh vao thu vien</button>
+           
+          
+        </div>
+        <div class="ctn-all-img">
+            hello
+        </div>
+
+
+    </div>
+</div>
+
+
+
+
+
+<script type="module" >
+import * as data from '/js/data/index.js';
+
+
+var valueProduct = document.querySelector('.show-product table')
+
+
+
+
+
+
+var modal = document.querySelector('.ctn-img')
+var clModal = document.querySelector('#show-modal-img')
+var modalImg = document.querySelector('.ctn-all-img');
+var closeModal = document.querySelector('.close-ctn-modal');
+var btnUpload = document.querySelector('.btn-upload')
+// var file = $('#fileToUpload')[0];
+
+
+// console.log(filedata)
+
+var callback = function(data){
+    let html =``;
+    data.forEach(dt=>{
+        html += `<div onclick="selectImg(this)" class="detail-img" data-value="${dt}" style="background-image: url('/img/${dt}'); "></div>`
+    })
+
+
+    modalImg.innerHTML = html;
+
+}
+
+data.api({url:'/api/img'}, callback);
+
+closeModal.onclick = function (e){
+    modal.style.display = 'none';
+}
+btnUpload.onclick = function(e){
+    alert(1);
+    let file = $('#fileToUpload').prop('files')[0];
+    var formData = new FormData();
+   
+    // console.log(file);
+    formData.append("fileToUpload", file);
+
+   
+
+    $.ajax({
+        type: "post",
+        url: "/upload",
+      
+        contentType: false,
+        processData: false,
+        data: formData,
+        success: function(response){
+           alert(response);
+           data.api({url:'/api/img'}, callback);
+        }
+    });
+        
+}
+
+
+</script>
+
+<script>
+   
+    let getNameImg = document.querySelector('#get-name-img');
+    let ctnSelectImg =  document.querySelector('.show-img-select');
+  
+    function remove(el){
+        let nameImg = el.parentElement.getAttribute('data-value')+',';
+      
+       console.log( nameImg);
+       getNameImg.value = getNameImg.value.replace(nameImg, '');
+       (el.parentElement.remove())
+    }
+    function selectImg(el) {
+        let nameImg = el.getAttribute('data-value')
+        
+        
+        
+        let inputImg = document.querySelector(".show-name-url-img");
+        console.log(inputImg, nameImg);
+        inputImg.value =  '/img/'+ nameImg;
+       
+        
+    }
+</script>

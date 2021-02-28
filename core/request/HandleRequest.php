@@ -49,7 +49,7 @@ abstract class HandleRequest
     public function setPath()
     {
        
-        $this->path = preg_replace('/[^A-Za-z0-9\-\.\/\?\=\&\_]/', '', $this->pathCli);
+        $this->path = preg_replace('/[^A-Za-z0-9\-\.\/\?\=\&\_\@]/', '', $this->pathCli);
         if($this->path === $this->pathCli){
             $position = strpos($this->path, '?');
             if($position !== false){

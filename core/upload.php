@@ -2,15 +2,28 @@
 
 namespace main\core;
 
+use main\core\exceptions\NotFoundException;
 use main\core\middlewares\AuthMiddleware;
 
-class upload
+class upload extends Controller
 {
-    public function __construct()
+    public function __construct(Request $request)
     {
         $this->login = new AuthMiddleware(['upload']);
         $this->login->execute();
+        // if($request->isGet() ){
+        //    throw new NotFoundException();
+        // } 
     }
+
+    public function show()
+    {
+        $this->render([
+            'name'=>'Vuong',
+            'title'=> 'tilte',
+        ], 'showmodalimg.html', 'login');
+    }
+
 
     public function upload(Request $request)
     {
