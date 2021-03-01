@@ -113,7 +113,7 @@ abstract class Model
     {
         return [
             self::RULE_INT => "Day khong phai so ",
-            self::RULE_RIQUIRED => "This field is Required",
+            self::RULE_RIQUIRED => "không được để trống",
             self::RULE_EMAIL => "This field must be valid email address",
             self::RULE_MAX => "Max length of this field must be {max}",
             self::RULE_MIN => "Min length of this field must be {min}",

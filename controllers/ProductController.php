@@ -7,6 +7,7 @@ use main\core\Response;
 use main\core\Test;
 use main\models\ProductModel;
 use main\core\middlewares\AuthMiddleware;
+use main\models\SeoModel;
 
 class ProductController extends Controller
 {
@@ -59,9 +60,35 @@ class ProductController extends Controller
 
     public function insert(Request $request)
     {
-        
+        $errors = [];
+        $seoModel = new SeoModel(static::class);
+        // echo $seoModel->getClass();
         if($request->isPost()){
-            Test::show($request->getBody());
+            $req = $request->getBody();
+            
+            $this->model->loadData($req);
+            $seoModel->loadData($req);
+           
+           
+            $checkSeo = $seoModel->findOne(['path' => $req['path']]);
+            
+
+            
+            // Test::show($checkSeo );
+            if(!$checkSeo && $this->model->validate() &&  $seoModel->validate()){
+                $this->model->save();
+                $seoModel->save();
+                echo "success";
+            } else {
+                
+                Test::show($seoModel->errors);
+                $errors = $this->model->errors + $seoModel->errors;
+                
+        
+                
+            }
+            
+
         }
     }
 

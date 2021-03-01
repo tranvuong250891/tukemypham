@@ -119,11 +119,11 @@ btnAddProduct.onclick = function (){
         url: "/insertproduct",
        
         data: {
-            nameProduct: nameProduct.value,
-            priceProduct: priceProduct.value ,
-            imgProduct:imgProduct.value ,
-            urlProduct: urlProduct.value ,
-            contentProduct: contentProduct ,
+            name: nameProduct.value,
+            price: priceProduct.value ,
+            img_id:imgProduct.value ,
+            path: urlProduct.value ,
+            content: contentProduct ,
         },
         success: function(response){
            console.log(response);

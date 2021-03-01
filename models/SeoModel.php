@@ -2,13 +2,23 @@
 namespace main\models;
 
 use main\core\database\DbModel;
+use main\core\Test;
 
 class SeoModel extends DbModel
 {
-    public $name = '';
+    
     public $path = '';
     public $class = '';
     public $create_at;
+    
+
+    public function __construct($class)
+    {
+       $this->class = $class;
+       $this->create_at = date('Y/m/d H:i:s');
+       
+    
+    }
 
     public function labels(): array
     {
@@ -17,7 +27,10 @@ class SeoModel extends DbModel
 
     public function rules(): array
     {
-        return [];
+        return [
+            'path' => [self::RULE_RIQUIRED],
+            'class' =>  [self::RULE_RIQUIRED],
+        ];
     }
 
     public function primaryKey(): string
@@ -33,8 +46,15 @@ class SeoModel extends DbModel
     public function attributes(): array
     {
         return [
-            'name', 'class', 'create_at', 'path'
+             'class', 'create_at', 'path'
         ];
     }
+
+    public function save()
+    {
+        return parent::save();
+    }
+
+   
 
 }
