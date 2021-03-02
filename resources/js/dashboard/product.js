@@ -36,7 +36,7 @@ function showProduct(data){
                 <td class="td-img">${elImg}</td>
                 <td>${dt.price}</td>
                 <td><button>edit</button></td>
-                <td><button>xoa</button></td>
+                <td><button onclick="deleteProduct(${dt.id})" data-id="${dt.id} class="btn-delete-product">xoa</button></td>
             </tr>`;
     });
   
@@ -102,39 +102,35 @@ btnUpload.onclick = function(e){
         
 }
 
-let btnAddProduct = document.querySelector('.btn-add-product')
-
-btnAddProduct.onclick = function (){
-    let nameProduct = document.querySelector('#name-product')
-    let priceProduct = document.querySelector('#price-product')
-    let imgProduct = document.querySelector('#img-product')
-    let urlProduct = document.querySelector('#url-product')
-   
-    var contentProduct = CKEDITOR.instances.editor.getData();
-
-
-    // console.log(imgProduct.value, nameProduct.value, urlProduct.value, contentProduct)
-    $.ajax({
-        type: "post",
-        url: "/insertproduct",
-       
-        data: {
-            name: nameProduct.value,
-            price: priceProduct.value ,
-            img_id:imgProduct.value ,
-            path: urlProduct.value ,
-            content: contentProduct ,
-        },
-        success: function(response){
-           console.log(response);
-        
-        }
-    });
-    
-
-
-
+function messError(el, mess){
+    let formGroup = el.parentElement
+    let messErr = formGroup.querySelector('span')
+    messErr.innerHTML = mess[0];
 }
+
+
+function handleForm(forms, req){
+    forms.forEach(form=>{
+        let field = form.querySelector('.field');
+        let nameField = field.getAttribute('name');
+        console.log(nameField);
+        if(req[nameField]){
+            messError(field, req[nameField]);
+        }
+   
+    })
+}
+
+
+
+
+
+
+
+
+
+
+
 
     
    

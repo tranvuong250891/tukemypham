@@ -25,6 +25,7 @@ Router::get('/apiproduct', [ProductController::class, 'index']);
 Router::get('/detail', [ProductController::class, 'show']);
 Router::post('/insertproduct', [ProductController::class, 'insert']);
 Router::get('/insertproduct', [ProductController::class, 'insert']);
+Router::get('/deleteproduct', [ProductController::class, 'delete']);
 
 
 

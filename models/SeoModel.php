@@ -10,6 +10,7 @@ class SeoModel extends DbModel
     public $path = '';
     public $class = '';
     public $create_at;
+    public $category_id ;
     
 
     public function __construct($class)
@@ -46,12 +47,13 @@ class SeoModel extends DbModel
     public function attributes(): array
     {
         return [
-             'class', 'create_at', 'path'
+             'class', 'create_at', 'path', 'category_id'
         ];
     }
 
-    public function save()
+    public function _save($id)
     {
+        $this->category_id = $id;
         return parent::save();
     }
 

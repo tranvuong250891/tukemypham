@@ -84,6 +84,35 @@ abstract class DbModel extends Model
 
     }
 
+    public function fetchOne()
+    {
+        $tableName = static::tableName();
+        $id = $this->primaryKey();
+
+        $sql = "SELECT * FROM $tableName ORDER BY $id DESC LIMIT 1";
+        $statement = self::prepare($sql);
+        $statement->execute();
+        return $statement->fetch();
+
+
+    }
+
+    public function delete($where)
+    {
+        // return $valueId;
+        $tableName = $this->tableName();
+        foreach($where as $key => $value){
+            $id = $key;
+            $valueId = $value;
+        }
+        $id = $this->primaryKey();
+        $sql = "DELETE FROM $tableName  WHERE  $id = :$id ";
+        $statement = self::prepare($sql);
+        $statement->bindValue(":$id", $valueId);
+        $statement->execute();
+
+    }
+
 
 
 

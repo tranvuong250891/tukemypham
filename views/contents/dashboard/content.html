@@ -68,46 +68,41 @@
 
 <div class="form insert-product">
     <h1>them san pham moi</h1>
-    <div class="form-group">
+    <div class="form-group form-group1 ">
         <label for="">ten san pham:</label>
-        <input type="text" name="" id="name-product">
-        <span class="mess-rule">error</span>
+        <input class="field"  type="text" name="name" id="name-product">
+        <span class="mess-rule"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group form-group1 ">
         <label for="">anh</label>
-        <input  type="text" name="" id="img-product">
+        <input class="field"   name="img_id" type="text" name="" id="img-product">
 
         <div class="show-img-select">
         </div>
         <button id="show-modal-img">chon anh</button>
-        <span class="mess-rule">error</span>
+        <span class="mess-rule"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group form-group1 ">
         <label for="">gia san pham:</label>
-        <input type="text"  id="price-product">
-        <span class="mess-rule">error</span>
+        <input class="field" name="price" type="text"  id="price-product">
+        <span class="mess-rule"></span>
 
     </div>
-    <div class="form-group">
+    <div class="form-group form-group1 ">
         <label for="">Duong dan seo:</label>
-        <input type="text"  id="url-product">
-        <span class="mess-rule">error</span>
+        <input type="text" name="path" id="url-product" class="field">
+        <span class="mess-rule"></span>
     </div>
-    <div class="form-group">
+    <div class="form-group form-group1 ">
         <label for="">noi dung:</label>
-        <textarea  name="editor" id="editor"></textarea>
-        <span class="mess-rule">error</span>
+        <textarea class="field"  name="content" id="editor"></textarea>
+        <span class="mess-rule"></span>  
     </div>
 
     <button class="btn-add-product">Them san pham</button>
 </div>
 
-<script  >
-    
-
-
-    // console.log(contentProduct);
-
+<script >
 
 
   </script>
@@ -117,28 +112,71 @@
 <script type="module" src="/js/dashboard/product.js"></script>
 
 <script>
+    let btnAddProduct = document.querySelector('.btn-add-product')
+
     let getNameImg = document.querySelector('#img-product');
     let ctnSelectImg =  document.querySelector('.show-img-select');
-  
     function remove(el){
         let nameImg = el.parentElement.getAttribute('data-value')+',';
-      
-       console.log( nameImg);
-       getNameImg.value = getNameImg.value.replace(nameImg, '');
-       (el.parentElement.remove())
+        console.log( nameImg);
+        getNameImg.value = getNameImg.value.replace(nameImg, '');
+        (el.parentElement.remove())
     }
     function selectImg(el) {
-        
         let urlImg = el.getAttribute('style');
         let nameImg = el.getAttribute('data-value');
-       
         let divImg = `<div class="detail-img"  data-value="${nameImg}" style="${urlImg}">
             <button class="close" onclick="remove(this)">&#10006;</button>
             </div>`;
         ctnSelectImg.innerHTML += divImg;
         getNameImg.value += nameImg +',';
-        el.remove();
-        
+        el.remove();   
     }
+
+    btnAddProduct.onclick = function (){
+    var formGroups = document.querySelectorAll('.form-group1');
+    let nameProduct = document.querySelector('#name-product')
+    let priceProduct = document.querySelector('#price-product')
+    let imgProduct = document.querySelector('#img-product')
+    let urlProduct = document.querySelector('#url-product') 
+    var contentProduct = CKEDITOR.instances.editor.getData();
+        $.ajax({
+        type: "post",
+        url: "/insertproduct",
+       
+        data: {
+            name: nameProduct.value,
+            price: priceProduct.value ,
+            img_id:imgProduct.value ,
+            path: urlProduct.value ,
+            content: contentProduct ,
+        },
+        success: function(response){
+            console.log(response);
+            let res = JSON.parse(response);
+            if(res === 'success'){
+                alert("thêm sản phẩm thành công ")
+                location.reload();
+            } else {
+                handleForm(formGroups, res);
+            }
+        }
+    });
+}
+
+function deleteProduct(id) {
+    $.ajax({
+        type: 'get',
+        url:'/deleteproduct?id='+id,
+        success: function (response){
+            console.log(response);
+            alert('xoa thanh cong');
+            location.reload();
+        }
+        
+    })
+
+}
+
 </script>
 

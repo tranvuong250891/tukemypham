@@ -16,11 +16,11 @@ class ProductController extends Controller
 
     public function __construct(Request $request)
     {
-        $this->login = new AuthMiddleware(['insert']);
+        $this->login = new AuthMiddleware(['insert', 'delete']);
         $this->login->execute();
         $this->id = $request->getBody()['id'] ?? '';
         $this->model = new ProductModel();
-       
+        $this->seoModel = new SeoModel(static::class);
     }
 
     public function index()
@@ -72,24 +72,39 @@ class ProductController extends Controller
            
             $checkSeo = $seoModel->findOne(['path' => $req['path']]);
             
+           
+
+
+            
+
 
             
             // Test::show($checkSeo );
             if(!$checkSeo && $this->model->validate() &&  $seoModel->validate()){
                 $this->model->save();
-                $seoModel->save();
-                echo "success";
+                $id = $this->model->fetchOne()['id'];
+                $seoModel->_save($id);
+                echo json_encode('success');
             } else {
+                $seoModel->validate();
                 
-                Test::show($seoModel->errors);
                 $errors = $this->model->errors + $seoModel->errors;
                 
-        
+                echo json_encode($errors);
                 
             }
             
 
         }
+    }
+
+    public function delete(Request $request)
+    {
+        $req = $request->getBody();
+        // echo  $this->model->primyKey();
+        ($this->model->delete(['id' => $req['id']]));
+        
+        // $this->model->delete($req['id']);  
     }
 
 
