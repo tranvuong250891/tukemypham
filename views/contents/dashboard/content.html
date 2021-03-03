@@ -108,75 +108,8 @@
   </script>
 
 
+<script src="/js/dashboard/dashboardproduct.js"></script>
 
 <script type="module" src="/js/dashboard/product.js"></script>
 
-<script>
-    let btnAddProduct = document.querySelector('.btn-add-product')
-
-    let getNameImg = document.querySelector('#img-product');
-    let ctnSelectImg =  document.querySelector('.show-img-select');
-    function remove(el){
-        let nameImg = el.parentElement.getAttribute('data-value')+',';
-        console.log( nameImg);
-        getNameImg.value = getNameImg.value.replace(nameImg, '');
-        (el.parentElement.remove())
-    }
-    function selectImg(el) {
-        let urlImg = el.getAttribute('style');
-        let nameImg = el.getAttribute('data-value');
-        let divImg = `<div class="detail-img"  data-value="${nameImg}" style="${urlImg}">
-            <button class="close" onclick="remove(this)">&#10006;</button>
-            </div>`;
-        ctnSelectImg.innerHTML += divImg;
-        getNameImg.value += nameImg +',';
-        el.remove();   
-    }
-
-    btnAddProduct.onclick = function (){
-    var formGroups = document.querySelectorAll('.form-group1');
-    let nameProduct = document.querySelector('#name-product')
-    let priceProduct = document.querySelector('#price-product')
-    let imgProduct = document.querySelector('#img-product')
-    let urlProduct = document.querySelector('#url-product') 
-    var contentProduct = CKEDITOR.instances.editor.getData();
-        $.ajax({
-        type: "post",
-        url: "/insertproduct",
-       
-        data: {
-            name: nameProduct.value,
-            price: priceProduct.value ,
-            img_id:imgProduct.value ,
-            path: urlProduct.value ,
-            content: contentProduct ,
-        },
-        success: function(response){
-            console.log(response);
-            let res = JSON.parse(response);
-            if(res === 'success'){
-                alert("thêm sản phẩm thành công ")
-                location.reload();
-            } else {
-                handleForm(formGroups, res);
-            }
-        }
-    });
-}
-
-function deleteProduct(id) {
-    $.ajax({
-        type: 'get',
-        url:'/deleteproduct?id='+id,
-        success: function (response){
-            console.log(response);
-            alert('xoa thanh cong');
-            location.reload();
-        }
-        
-    })
-
-}
-
-</script>
 

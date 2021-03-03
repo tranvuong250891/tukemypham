@@ -12,6 +12,12 @@ class ProductModel extends DbModel
     public string $price = '';
     public string $content = '';
     public string $img_id = '';
+    public string $url_id = '';
+
+    public function __construct()
+    {
+        $this->create_at = date('Y/m/d H:i:s');
+    }
 
     public function tableName(): string
     {
@@ -39,7 +45,7 @@ class ProductModel extends DbModel
     public function attributes(): array
     {
         return [
-            'name', 'price', 'img_id', 'content', 'create_at'
+            'name', 'price', 'img_id', 'content', 'create_at', 'url_id'
         ];    
     }
 
@@ -48,18 +54,14 @@ class ProductModel extends DbModel
         $products = parent::getAll();
         foreach ($products as $k => $product ){
             $products[$k]['img_id'] = explode(",",  $product['img_id']);
-            // Test::show($product['img_id'], false);
         }
-
-        // Test::show($product['img_id'], false);
          return $products;
 
     }
 
     public function save()
     {
-        $this->create_at = date('Y/m/d H:i:s');
-        // Test::show($this);
+      
         parent::save();
     }
        

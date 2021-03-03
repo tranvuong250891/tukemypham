@@ -1,20 +1,13 @@
 import * as data from '../data/index.js';
 
-var editor = CKEDITOR.replace( 'editor',{
-    filebrowserBrowseUrl: '/upload/show',
-    filebrowserUploadUrl: '/ckfinder/core/connector/php/connector.php?command=QuickUpload&type=Files'
-  } );
-
-  
-
-
-var valueProduct = document.querySelector('.show-product table')
 
 document.querySelector('.modal').style.display = 'none';
 
 
-
+// var detailProduct = {1:2};
 function showProduct(data){
+    // detailProduct = data;
+    // console.log(detailProduct)
     let html = `<tr>
     <th>stt</th>
     <th>ten san pham</th>
@@ -27,7 +20,12 @@ function showProduct(data){
         // console.log(dt.img_id)
         let elImg = ``;
         dt.img_id.forEach(img=>{
-            elImg += `<div class="img-product" style="background-image: url('/img/${img}'); width: 3rem ; height: 3rem"></div>`
+           
+            if(img.substr(-4) === '.jpg'){
+                // console.log(img)
+                elImg += `<div class="img-product" style="background-image: url('/img/${img}'); width: 3rem ; height: 3rem"></div>`
+
+            }
         })
 
         html += `<tr>
@@ -35,16 +33,39 @@ function showProduct(data){
                 <td>${dt.name}</td>
                 <td class="td-img">${elImg}</td>
                 <td>${dt.price}</td>
-                <td><button>edit</button></td>
-                <td><button onclick="deleteProduct(${dt.id})" data-id="${dt.id} class="btn-delete-product">xoa</button></td>
+                <td><button class="btn-edit-product" number="${id}" data-id="${dt.id}" onclick="editProduct(${dt.id})">edit</button></td>
+                <td><button onclick="deleteProduct('${dt.url_id}')" data-id="${dt.id}" class="btn-delete-product">xoa</button></td>
             </tr>`;
     });
   
     valueProduct.innerHTML = html;
+    let editProducts = document.querySelectorAll('.btn-edit-product')
+    editProducts.forEach(product =>{
+    product.onclick = function (){
+        document.querySelector(' #name-product')
+        let number = product.getAttribute('number');
+        // console.log(data[number].content);
+        nameProduct.value = data[number].name;
+        priceProduct.value = data[number].price;
+        imgProduct.value = data[number].img_id;
+        urlProduct.value = data[number].url_id;
+        CKEDITOR.instances.editor.setData(data[number].content);
+        getInputImg(imgProduct);
+
+        
+
+    }
+    
+})
+    
+
     
 }
 
+
 data.api({url: '/apiproduct'}, showProduct)
+
+// console.log(detailProduct);
 
 var modal = document.querySelector('.ctn-img')
 var clModal = document.querySelector('#show-modal-img')
@@ -102,24 +123,9 @@ btnUpload.onclick = function(e){
         
 }
 
-function messError(el, mess){
-    let formGroup = el.parentElement
-    let messErr = formGroup.querySelector('span')
-    messErr.innerHTML = mess[0];
-}
 
 
-function handleForm(forms, req){
-    forms.forEach(form=>{
-        let field = form.querySelector('.field');
-        let nameField = field.getAttribute('name');
-        console.log(nameField);
-        if(req[nameField]){
-            messError(field, req[nameField]);
-        }
-   
-    })
-}
+
 
 
 

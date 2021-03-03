@@ -62,25 +62,16 @@ class ProductController extends Controller
     {
         $errors = [];
         $seoModel = new SeoModel(static::class);
-        // echo $seoModel->getClass();
         if($request->isPost()){
             $req = $request->getBody();
+            $req['url_id'] = $req['path']; 
             
+
             $this->model->loadData($req);
             $seoModel->loadData($req);
-           
-           
-            $checkSeo = $seoModel->findOne(['path' => $req['path']]);
             
-           
-
-
             
-
-
-            
-            // Test::show($checkSeo );
-            if(!$checkSeo && $this->model->validate() &&  $seoModel->validate()){
+            if( $this->model->validate() &&  $seoModel->validate()){
                 $this->model->save();
                 $id = $this->model->fetchOne()['id'];
                 $seoModel->_save($id);
@@ -93,18 +84,21 @@ class ProductController extends Controller
                 echo json_encode($errors);
                 
             }
-            
-
         }
+    }
+
+    public function update(Request $request)
+    {
+        
     }
 
     public function delete(Request $request)
     {
         $req = $request->getBody();
-        // echo  $this->model->primyKey();
-        ($this->model->delete(['id' => $req['id']]));
-        
-        // $this->model->delete($req['id']);  
+       
+        $this->model->delete(['url_id' => $req['path']]);
+        $this->seoModel->delete(['path' => $req['path']]);
+       
     }
 
 

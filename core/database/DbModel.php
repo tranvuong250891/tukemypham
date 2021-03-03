@@ -8,6 +8,8 @@ use main\core\Test;
 abstract class DbModel extends Model
 {
     public int $primaryKey;
+    public array $tableMatch = [];
+
     public function __construct()
     {
         
@@ -21,6 +23,7 @@ abstract class DbModel extends Model
     {
         $tableName = $this->tableName();
         $attributes = $this->attributes();
+        
         $params = array_map(fn($attr)=> ":$attr", $attributes);
         
         $sql = "INSERT INTO $tableName (". implode(',', $attributes).") VALUES (". implode(',', $params). ")" ;
@@ -28,14 +31,11 @@ abstract class DbModel extends Model
         $statement = $this->prepare($sql);
 
         foreach($attributes as $attr ){
+            // echo $attr .": ". $this->{$attr}. PHP_EOL;
             $statement->bindValue(":$attr", $this->{$attr});
         }
 
         $statement->execute();
-
-       
-        
-
         return true;
         
     }
@@ -105,7 +105,7 @@ abstract class DbModel extends Model
             $id = $key;
             $valueId = $value;
         }
-        $id = $this->primaryKey();
+        
         $sql = "DELETE FROM $tableName  WHERE  $id = :$id ";
         $statement = self::prepare($sql);
         $statement->bindValue(":$id", $valueId);

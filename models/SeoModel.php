@@ -13,7 +13,7 @@ class SeoModel extends DbModel
     public $category_id ;
     
 
-    public function __construct($class)
+    public function __construct($class = null)
     {
        $this->class = $class;
        $this->create_at = date('Y/m/d H:i:s');
@@ -23,13 +23,15 @@ class SeoModel extends DbModel
 
     public function labels(): array
     {
-        return [];
+        return [
+            'path' => 'duong dan '
+        ];
     }
 
     public function rules(): array
     {
         return [
-            'path' => [self::RULE_RIQUIRED],
+            'path' => [self::RULE_RIQUIRED, [self::RULE_UNIQUE, 'class'=> self::class]],
             'class' =>  [self::RULE_RIQUIRED],
         ];
     }
