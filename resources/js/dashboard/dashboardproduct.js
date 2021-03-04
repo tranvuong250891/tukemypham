@@ -1,33 +1,32 @@
 var editor = CKEDITOR.replace( 'editor',{
     filebrowserBrowseUrl: '/upload/show',
   } );
-
 var valueProduct = document.querySelector('.show-product table')
 var nameProduct = document.querySelector('#name-product')
 var priceProduct = document.querySelector('#price-product')
 var imgProduct = document.querySelector('#img-product')
 var urlProduct = document.querySelector('#url-product') 
 var contentProduct = CKEDITOR.instances.editor.getData()
-
-
+var btnAction = document.querySelector('.btn-action')
 var btnAddProduct = document.querySelector('.btn-add-product')
+var getNameImg = document.querySelector('#img-product');
+var ctnSelectImg =  document.querySelector('.show-img-select');
+var formGroups = document.querySelectorAll('.form-group1');
 
-    var getNameImg = document.querySelector('#img-product');
-    var ctnSelectImg =  document.querySelector('.show-img-select');
 function messError(el, mess){
-let formGroup = el.parentElement
-let messErr = formGroup.querySelector('span')
-messErr.innerHTML = mess[0];
+    let formGroup = el.parentElement
+    let messErr = formGroup.querySelector('span')
+    messErr.innerHTML = mess[0];
 }
-function handleForm(forms, req){
-forms.forEach(form=>{
-    let field = form.querySelector('.field');
-    let nameField = field.getAttribute('name');
-    console.log(nameField);
-    if(req[nameField]){
-        messError(field, req[nameField]);
-    }
 
+function handleForm(forms, req){
+    forms.forEach(form=>{
+        let field = form.querySelector('.field');
+        let nameField = field.getAttribute('name');
+        console.log(nameField);
+        if(req[nameField]){
+            messError(field, req[nameField]);
+        }
     })
 }
 
@@ -48,12 +47,12 @@ function getInputImg(ip){
         ctnSelectImg.innerHTML = html
     })
 }
+
 function selectImg(el) {
     let urlImg = el.getAttribute('style');
     let nameImg = el.getAttribute('data-value');
     let divImg = `<div class="detail-img"  data-value="${nameImg}" style="${urlImg}">
-        <button class="close" onclick="remove(this)">&#10006;</button>
-        </div>`;
+        <button class="close" onclick="remove(this)">&#10006;</button></div>`;
     ctnSelectImg.innerHTML += divImg;
     getNameImg.value += nameImg +',';
     getInputImg(imgProduct)
@@ -61,30 +60,27 @@ function selectImg(el) {
 }
 
 btnAddProduct.onclick = function (){
-    var formGroups = document.querySelectorAll('.form-group1');
-   
-        $.ajax({
-            type: "post",
-            url: "/insertproduct",
-        
-            data: {
-                name: nameProduct.value,
-                price: priceProduct.value ,
-                img_id:imgProduct.value ,
-                path: urlProduct.value ,
-                content: contentProduct ,
-            },
-            success: function(response){
-                console.log(response);
-                let res = JSON.parse(response);
-                if(res === 'success'){
-                    alert("thêm sản phẩm thành công ")
-                    location.reload();
-                } else {
-                    handleForm(formGroups, res);
-                }
+    $.ajax({
+        type: "post",
+        url: "/insertproduct",
+        data: {
+            name: nameProduct.value,
+            price: priceProduct.value ,
+            img_id:imgProduct.value ,
+            path: urlProduct.value ,
+            content: contentProduct ,
+        },
+        success: function(response){
+            console.log(response);
+            let res = JSON.parse(response);
+            if(res === 'success'){
+                alert("thêm sản phẩm thành công ")
+                location.reload();
+            } else {
+                handleForm(formGroups, res);
             }
-        });
+        }
+    });
 }
 
 function deleteProduct(path) {
@@ -99,7 +95,38 @@ function deleteProduct(path) {
     })
 }
 
+function setValueProduct(forms, callback){
+    forms.forEach(form=>{
+        let field = form.querySelector('.field')
+        let nameField = field.getAttribute('name');
+        callback[nameField] = field.value;
+        if(field.id === 'editor'){
+            callback[nameField] = CKEDITOR.instances.editor.getData() 
+        }   
+    })
+    return (callback);
+}
 
-// getInputImg(imgProduct);
-
-
+function editProduct(value){
+    btnAction.innerHTML = `<button data-value="${value.id}" class="btn-edit">sua san pham</button>
+    <button class="btn-cancel">cancel</button>`;
+    let btnCancel = document.querySelector('.btn-cancel');
+    let btnEdit = document.querySelector('.btn-edit')
+    
+    btnCancel.onclick = function(){
+        location.reload();
+    }
+    btnEdit.onclick = function (){
+        let req = {};
+        setValueProduct(formGroups, req);
+        
+       $.ajax({
+           url: '/updateproduct',
+           type: 'post',
+           data:req,
+           success: function(response){
+                console.log(response)
+           }
+       })
+    }
+}

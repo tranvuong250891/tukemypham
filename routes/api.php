@@ -26,6 +26,8 @@ Router::get('/detail', [ProductController::class, 'show']);
 Router::post('/insertproduct', [ProductController::class, 'insert']);
 Router::get('/insertproduct', [ProductController::class, 'insert']);
 Router::get('/deleteproduct', [ProductController::class, 'delete']);
+Router::post('/updateproduct', [ProductController::class, 'update']);
+
 
 
 

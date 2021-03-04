@@ -31,13 +31,33 @@ abstract class DbModel extends Model
         $statement = $this->prepare($sql);
 
         foreach($attributes as $attr ){
-            // echo $attr .": ". $this->{$attr}. PHP_EOL;
+            
             $statement->bindValue(":$attr", $this->{$attr});
         }
 
         $statement->execute();
         return true;
         
+    }
+
+    public function update()
+    {
+        $tableName = $this->tableName();
+        $attributes = $this->attributes();
+        
+        $params = array_map(fn($attr)=> ":$attr", $attributes);
+        
+        $sql = "INSERT INTO $tableName (". implode(',', $attributes).") VALUES (". implode(',', $params). ")" ;
+        
+        $statement = $this->prepare($sql);
+
+        foreach($attributes as $attr ){
+            
+            $statement->bindValue(":$attr", $this->{$attr});
+        }
+
+        $statement->execute();
+        return true;
     }
 
     public function findOne($where) 
