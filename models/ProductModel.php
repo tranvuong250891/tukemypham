@@ -62,7 +62,7 @@ class ProductModel extends DbModel
     public function save()
     {
       
-        parent::save();
+        return parent::save();
     }
        
 

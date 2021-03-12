@@ -1,142 +1,456 @@
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.bg-dark {
+  background-color: #0062cc;
+  color: white;
+}
+
+h1 {
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
 }
 
 .bor {
-    border: 1px solid;
+  border: 1px solid;
 }
 
-.ctn-modal{
-   
-    width: 90%;
-    height: 90%;
-    background-color: white;
-    margin: auto;
+.ctn-modal {
+  width: 90%;
+  height: 90%;
+  background-color: white;
+  margin: auto;
 }
 
-.modal{
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    left: 0;
-    top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    padding-top: 60px;
+.modal {
+  display: none;
+  /* Hidden by default */
+  position: fixed;
+  /* Stay in place */
+  z-index: 1;
+  /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%;
+  /* Full width */
+  height: 100%;
+  /* Full height */
+  overflow: auto;
+  /* Enable scroll if needed */
+  background-color: black;
+  /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.4);
+  /* Black w/ opacity */
+  padding-top: 60px;
 }
 
 button {
-    background-color: inherit;
-    /* Green */
-    border: 1px solid;
-    color: inherit;
-    padding: .5rem;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    cursor: pointer;
-    outline: inherit;
-    font-weight: 600;
+  background-color: inherit;
+  /* Green */
+  border: 1px solid;
+  color: inherit;
+  padding: .5rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  cursor: pointer;
+  outline: inherit;
+  font-weight: 600;
 }
 
-button:hover{
-    border: 1px solid #0062cc;
+button:hover {
+  border: 1px solid #0062cc;
 }
 
 input {
-    background-color: inherit;
-    color: inherit;
-    border: 1px solid;
-    padding: .5rem;
-    outline: inherit;
+  background-color: inherit;
+  color: inherit;
+  border: 1px solid;
+  padding: .5rem;
+  outline: inherit;
 }
 
 .btn-facebook {
-    display: none;
-    display: block;
-    background-color: white;
-    color: #0062cc;
+  display: none;
+  display: block;
+  background-color: white;
+  color: #0062cc;
 }
 
 .btn-facebook:hover {
-    background-color: #0062cc;
-    color: white;
-    border: 1px solid #0062cc;
+  background-color: #0062cc;
+  color: white;
+  border: 1px solid #0062cc;
 }
 
 .btn-google {
-    display: none;
-    display: block;
-    background-color: white;
-    color: red;
+  display: none;
+  display: block;
+  background-color: white;
+  color: red;
 }
 
 .btn-google:hover {
-    background-color: red;
-    color: white;
-    border: none;
+  background-color: red;
+  color: white;
+  border: none;
 }
 
 i {
-    overflow: hidden;
-    display: flex;
-    float: left;
+  overflow: hidden;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  float: left;
 }
 
 .ctn-row {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .ctn-row.center {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .ctn-row.left {
-    text-align: center;
-    align-items: center;
-    justify-content: flex-start;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .ctn-row .w-25 {
-    flex: 0 0 25%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
 }
 
 .ctn-row .w-75 {
-    flex: 0 0 75%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 75%;
+          flex: 0 0 75%;
 }
 
 .ctn-col {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .ctn-col.center {
-    text-align: center;
-    justify-content: center;
-    align-items: center;
+  text-align: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
 }
 
 .ctn-col.left {
-    text-align: center;
-    align-items: center;
-    justify-content: flex-start;
+  text-align: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
 }
 
 .ctn-col .w-25 {
-    flex: 0 0 25%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 25%;
+          flex: 0 0 25%;
 }
 
 .ctn-col .w-75 {
-    flex: 0 0 75%;
+  -webkit-box-flex: 0;
+      -ms-flex: 0 0 75%;
+          flex: 0 0 75%;
 }
 
+.name-tittle {
+  position: relative;
+  width: 10rem;
+  height: 3rem;
+  background-color: #0062cc;
+  color: #fff;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  padding: 0.5rem;
+}
+
+.name-tittle:after {
+  content: '';
+  position: absolute;
+  top: 0rem;
+  border-top: 3rem solid #0062cc;
+  border-right: 3rem solid transparent;
+  right: -3rem;
+  position: absolute;
+}
+
+.dt-product {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  border-radius: 10px 10px 10px 10px;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-transition: all 0.2s ease-in-out;
+  transition: all 0.2s ease-in-out;
+  border: 1px solid #888888;
+}
+
+.dt-product .img-product {
+  width: 100%;
+  padding-top: 100%;
+  background-position: center;
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+  margin: auto;
+  border-radius: 10px 10px 0px 0px;
+  position: relative;
+}
+
+.dt-product .img-product .show-ac-product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  height: 100%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  top: 0px;
+  left: 0.5rem;
+  position: absolute;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  max-width: 0rem;
+  overflow: hidden;
+  -webkit-transition: max-width 0.2s ease-in-out;
+  transition: max-width 0.2s ease-in-out;
+}
+
+.dt-product .img-product .show-ac-product i {
+  background-color: #0062cc;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  color: #fff;
+  cursor: pointer;
+  padding: .5rem;
+  border: 1px solid #0062cc;
+  border-radius: 9px 9px 9px 9px;
+}
+
+.dt-product .img-product .show-ac-product button {
+  border: unset;
+}
+
+.dt-product .name-product {
+  margin: 0.5rem auto;
+  font-size: 1.2rem;
+}
+
+.dt-product .price-product {
+  margin: 0.5rem auto;
+  padding-top: 1rem;
+  background-color: red;
+  border-radius: 9px 9px 9px 9px;
+  padding: 0.5rem;
+  color: #fff;
+  font-weight: bold;
+}
+
+.dt-product:hover {
+  -webkit-box-shadow: 5px 5px 3px #aaaaaa;
+          box-shadow: 5px 5px 3px #aaaaaa;
+}
+
+.dt-product:hover .img-product {
+  background-size: 120% 120%;
+}
+
+.dt-product:hover .img-product .show-ac-product {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  max-width: 10rem;
+}
+
+.dt-product:hover .img-product .show-ac-product i:hover {
+  background-color: #fff;
+  color: #0062cc;
+  border: 1px solid #0062cc;
+}
+
+.ctn-form {
+  margin: 1rem;
+  background-color: rgba(0, 0, 0, 0.05);
+  padding: 1rem;
+  border-radius: 1rem;
+}
+
+.ctn-form h1 {
+  color: #0062cc;
+  text-align: center;
+}
+
+.ctn-form .field {
+  width: 100%;
+  margin: 1rem auto;
+}
+
+.ctn-form .field label {
+  font-size: 1.5rem;
+  display: block;
+  font-weight: 600;
+}
+
+.ctn-form .field .field-value {
+  display: block;
+  margin: .5rem auto;
+  width: 80%;
+  padding: .5rem;
+  border-radius: 4px;
+  cursor: pointer;
+  resize: none;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.ctn-form .field .field-value:focus {
+  background-color: white;
+}
+
+.ctn-form .field .field-value .field-value-item {
+  height: 2rem;
+}
+
+.ctn-form .field .field-value option {
+  padding: 1rem;
+}
+
+.ctn-form .field .mess-error {
+  display: block;
+  width: 80%;
+  margin: auto;
+}
+
+.ctn-form .btn {
+  padding: 1rem;
+  margin-left: 10%;
+  background-color: white;
+  border: 1px solid #0062cc;
+  border-radius: 4px;
+  color: #0062cc;
+}
+
+.ctn-form .btn:hover {
+  background-color: #0062cc;
+  color: white;
+}
+
+/*the container must be positioned relative:*/
+.custom-select {
+  position: relative;
+  border: 1px solid black;
+}
+
+.custom-select select {
+  display: none;
+  /*hide original SELECT element:*/
+}
+
+.select-selected {
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 4px;
+}
+
+/*style the arrow inside the select element:*/
+.select-selected:after {
+  position: absolute;
+  content: "";
+  top: 14px;
+  right: 10px;
+  width: 0;
+  height: 0;
+  border: 6px solid transparent;
+  border-color: #fff transparent transparent transparent;
+}
+
+/*point the arrow upwards when the select box is open (active):*/
+.select-selected.select-arrow-active:after {
+  border-color: transparent transparent #fff transparent;
+  top: 7px;
+}
+
+/*style the items (options), including the selected item:*/
+.select-items div, .select-selected {
+  color: black;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+  cursor: pointer;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+/*style items (options):*/
+.select-items {
+  position: absolute;
+  background-color: white;
+  color: black;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 99;
+}
+
+/*hide the items when the select box is closed:*/
+.select-hide {
+  display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+/*# sourceMappingURL=lib.css.map */

@@ -27,10 +27,6 @@ abstract class HandleRequest
         $this->getPath();
         $path = substr($this->getPath(), 1) ;
         $this->urlSeo =  Main::$main->db->search('url_seo',['path' => $path]);
-        
-        
-
-        
        
         
 
@@ -56,6 +52,7 @@ abstract class HandleRequest
                 $this->path =  substr($this->path, 0 , $position); 
                 }
             $this->handledPath = $this->path;
+            
             
         } else {
             echo "loi ky tu dac biet trong duong dan"."<br>";

@@ -35,29 +35,42 @@ abstract class DbModel extends Model
             $statement->bindValue(":$attr", $this->{$attr});
         }
 
-        $statement->execute();
-        return true;
+        return Main::$main->db->getId($statement);
+        
         
     }
 
-    public function update()
+    public function update($id, $key = null,array $attributes = null)
     {
+        
+        $key = $key ?? $this->primaryKey();
+    
         $tableName = $this->tableName();
-        $attributes = $this->attributes();
+        $attributes = $attributes ??  $this->attributes();
         
-        $params = array_map(fn($attr)=> ":$attr", $attributes);
         
-        $sql = "INSERT INTO $tableName (". implode(',', $attributes).") VALUES (". implode(',', $params). ")" ;
+
+        $params = array_map(fn($attr)=> "$attr=:$attr", $attributes);
+         $params = implode(',', $params);
+
+
+        $sql = "UPDATE  $tableName SET $params WHERE $key=:$key";
         
         $statement = $this->prepare($sql);
-
+        $statement->bindValue(":$key", $id);
         foreach($attributes as $attr ){
+             
             
             $statement->bindValue(":$attr", $this->{$attr});
+            
         }
 
         $statement->execute();
-        return true;
+
+       
+        
+
+        
     }
 
     public function findOne($where) 
@@ -87,6 +100,8 @@ abstract class DbModel extends Model
         
         return Main::$main->db->prepare($sql);
     }
+
+
 
     public function getAll() 
     {

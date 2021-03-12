@@ -31,7 +31,7 @@ class SeoModel extends DbModel
     public function rules(): array
     {
         return [
-            'path' => [self::RULE_RIQUIRED, [self::RULE_UNIQUE, 'class'=> self::class]],
+            'path' => [self::RULE_RIQUIRED],
             'class' =>  [self::RULE_RIQUIRED],
         ];
     }
@@ -53,11 +53,13 @@ class SeoModel extends DbModel
         ];
     }
 
-    public function _save($id)
+    public function _save($category_id)
     {
-        $this->category_id = $id;
+        $this->category_id = $category_id;
         return parent::save();
     }
+
+   
 
    
 

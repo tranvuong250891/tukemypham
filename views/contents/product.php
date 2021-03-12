@@ -21,4 +21,3 @@
     <button>&rarr;</button>
 </div>
 <script type="module" src="/js/product.js"></script>
-

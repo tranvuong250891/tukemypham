@@ -18,6 +18,7 @@ class Controller
     {
         
         Main::$main->view->renderView($params, $content, $layout);
+        exit;
        
        
     }

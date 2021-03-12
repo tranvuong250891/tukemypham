@@ -117,7 +117,7 @@ function editProduct(value){
         location.reload();
     }
     btnEdit.onclick = function (){
-        let req = {};
+        let req = {id: value.id};
         setValueProduct(formGroups, req);
         
        $.ajax({
@@ -125,7 +125,10 @@ function editProduct(value){
            type: 'post',
            data:req,
            success: function(response){
-                console.log(response)
+            console.log(response);
+            let res = JSON.parse(response);
+            handleForm(formGroups, res);
+               
            }
        })
     }

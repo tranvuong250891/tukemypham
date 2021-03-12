@@ -90,7 +90,7 @@ abstract class Model
             }
         }
 
-
+        
         return empty($this->errors);
     }
 

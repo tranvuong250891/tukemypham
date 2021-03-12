@@ -2,7 +2,7 @@
 namespace main\core;
 class Database
 {
-    public \PDO $pdo;
+    protected \PDO $pdo;
 
     public function __construct(array $configDb)
     {
@@ -22,9 +22,18 @@ class Database
 
     public function fetch($sql)
     {
+        
         $stament = $this->prepare($sql);
         $stament->execute();
         return $stament->fetch();
+    }
+
+    public function getId($statement)
+    {
+        
+        $statement->execute();
+        return $this->pdo->lastInsertId();
+         
     }
 
     public function fetchAll($sql)

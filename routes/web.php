@@ -11,6 +11,7 @@ use main\core\Router;
 Router::get('/home', [HomeController::class, 'index' ]);
 Router::get('/', [HomeController::class, 'index' ]);
 
+
 //LOGIN
 Router::get('/login', [AuthController::class, 'login']);
 Router::post('/login', [AuthController::class, 'login']);

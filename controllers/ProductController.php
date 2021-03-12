@@ -13,10 +13,9 @@ class ProductController extends Controller
 {
     protected string $id;
 
-
     public function __construct(Request $request)
     {
-        $this->login = new AuthMiddleware(['insert', 'delete']);
+        $this->login = new AuthMiddleware(['insert', 'delete', 'update']);
         $this->login->execute();
         $this->id = $request->getBody()['id'] ?? '';
         $this->model = new ProductModel();
@@ -25,8 +24,6 @@ class ProductController extends Controller
 
     public function index()
     {
-    
-
         echo json_encode($this->model->getAll());
     }
 
@@ -34,14 +31,18 @@ class ProductController extends Controller
     {
         $data = $this->model->findOne(['id'=>$this->id]);
         $data = (array) $data;
-       
+        // echo $request->getPath();
+        if($request->getPath() === '/editproduct'){
+            $this->render([
+                'name'=>'Vuong',
+                'title'=> 'tilte',
+            ], '/dashboard/content.html');
+            return;
+        };
         if(!$data){
             $response->redirect('/');
         }
-        $this->render($data, 'productDetail.html');
-
-        
-        
+        $this->render($data, 'productDetail.html');  
     }
 
     public function detail(Request $request)
@@ -60,7 +61,7 @@ class ProductController extends Controller
 
     public function insert(Request $request)
     {
-        $errors = [];
+        $errors = false;
         $seoModel = new SeoModel(static::class);
         if($request->isPost()){
             $req = $request->getBody();
@@ -69,20 +70,19 @@ class ProductController extends Controller
 
             $this->model->loadData($req);
             $seoModel->loadData($req);
-            
-            
-            if( $this->model->validate() &&  $seoModel->validate()){
-                $this->model->save();
-                $id = $this->model->fetchOne()['id'];
-                $seoModel->_save($id);
+            $check = $seoModel->findOne(['path'=>$req['path']]);
+            $seoModel->validate();
+            $this->model->validate();
+            if($check){
+                $seoModel->addError('path', 'duong dan nay ton tai');
+            }
+            $errors = $this->model->errors + $seoModel->errors;
+            if(!$errors){
+                $category_id =  $this->model->save();
+                $seoModel->_save($category_id);
                 echo json_encode('success');
             } else {
-                $seoModel->validate();
-                
-                $errors = $this->model->errors + $seoModel->errors;
-                
                 echo json_encode($errors);
-                
             }
         }
     }
@@ -90,6 +90,22 @@ class ProductController extends Controller
     public function update(Request $request)
     {
         $req = $request->getBody();
+        $req['url_id'] = $req['path'];
+        $this->model->loadData($req);
+        $this->seoModel->loadData($req);
+        if( $this->model->validate() &&  $this->seoModel->validate()){
+            $this->model->update($req['id']);
+            $this->seoModel->update($req['id'], 'category_id',['path']);
+            echo json_encode('success');
+        } else {
+            $this->seoModel->validate();
+            
+            $errors = $this->model->errors + $this->seoModel->errors;
+            
+            echo json_encode($errors);
+            
+        }
+        
         
     }
 

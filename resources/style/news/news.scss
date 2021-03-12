@@ -1,0 +1,92 @@
+@media only screen and (min-width: 1024px) {
+    .detail-news{
+        border-right: 1px solid rgba($color: #000000, $alpha: .3);
+        border-bottom: 1px solid rgba($color: #000000, $alpha: .3);
+        padding: 1rem;
+        .tittle{
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: black;
+            cursor: pointer;
+            &:hover{
+                color: #0062cc;
+            }
+        }
+        .img{
+            float: left;
+            width: 40%;
+            padding-top: 24.72%;
+            background-size: 100% 100%;
+            margin-right: 1rem;
+        }
+        .description{
+        }
+    }
+   
+    #ctn-news{
+        display: grid;
+        width: 100%;
+        height: 100%;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 10px 10px;
+        .top-news{
+            display: grid;
+            grid-column: 1/4;
+            grid-template-columns:1fr 1fr 1fr;
+            border-radius: 1rem 1rem 1rem 1rem ;
+            background-color: rgba($color: #000000, $alpha: .1);
+            padding: 10px;
+            .caption{
+                grid-column: 1/4;
+                text-align: right;
+                h1{
+                    color: red;
+                    font-size: 1.5rem;
+                    font-weight: 600;
+                    text-align: center;
+                }
+                span{
+                   margin-right: 0px;
+                    margin-right: 0;   
+                }
+            }
+            .first-news{
+                border-right: 1px solid rgba($color: #000000, $alpha: .3);
+                border-bottom: 1px solid rgba($color: #000000, $alpha: .3);
+                grid-row: 2/5;
+                .detail-news{                
+                    width: 100%;
+                    border: unset;
+                    .img{
+                        width: 100%;
+                        padding-top: 61.8%;
+                    }
+                }
+            }
+            .third-news{
+                grid-column: 2/3;
+            }
+            .ctn-ads{
+                grid-column: 3/4;
+                grid-row: 2/5;
+                border: 1px solid rgba($color: #000000, $alpha: .3);
+            }
+        }
+        .ctn-detail-news{
+            background-color: rgba($color: #000000, $alpha: .1);
+            grid-column: 1/2;
+        }
+        .name-news{
+            padding: 1rem;
+            display: grid;
+            grid-column: 1/4;
+            grid-template-columns:repeat(3, 1fr) ;
+            grid-template-rows: auto auto;
+            background-color: rgba($color: #000000, $alpha: .1);
+            gap: 10px 1rem;
+            .name-tittle{
+                grid-column:1/4 ;
+            }
+        }
+    }
+}
