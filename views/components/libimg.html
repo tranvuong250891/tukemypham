@@ -1,0 +1,128 @@
+<style>
+    #model-show-img{
+        display: block;
+    }
+    .btn-show{
+        display: block;
+        text-align: right;
+    }
+    .form-add-lib{
+        margin: auto;
+       text-align: center;
+    }
+
+    .ctn-all-img, .show-select-img{
+        margin: 1.5rem auto;
+        display: grid;
+        width: 90%;
+        gap: 1rem;
+      
+        grid-template-columns: repeat(10, 1fr);
+    }
+
+    .detail-img {
+        position: relative;
+        width: 100%;
+        padding-top: 61.8%;
+        background-size: 100% 100%;
+        
+        gap: 2rem 2rem;
+        cursor: pointer;
+    }
+
+    .detail-img button {
+       
+        width: 2rem;
+        height: 2rem;
+        position: absolute;
+        right: -1rem;
+        top: -1rem;
+        border-radius: 1rem;
+        color: red;
+    }
+    .detail-img button:hover{
+        background-color: red;
+        color: white;
+    }
+
+    
+
+</style>
+
+<div class="modal ctn-img" id="model-show-img" >
+    <div class="ctn-modal">
+        <div class="btn-show">   
+            <button class="close-ctn-modal">&#215;</button>
+        </div>
+        
+        <div class="form-add-lib">
+            <input type="file" name="fileToUpload" id="fileToUpload">
+            <button class="btn-upload">them anh vao thu vien</button>
+        </div>
+        <div class="ctn-all-img">
+            
+        </div>
+    </div>
+</div>
+<script>
+    var model = document.querySelector('#model-show-img');
+    var ctnShowImg = document.querySelector('.ctn-all-img');
+    var closeModal = document.querySelector('.close-ctn-modal')
+    var ctnSelectImg = document.querySelector('.show-select-img')
+    var ip = document.querySelector('.show-name-img');
+    model.style.display = "none";
+    closeModal.onclick = function(){
+        model.style.display = "none";
+    }
+
+    function showModalImg(){
+        model.style.display = "block";
+    }
+
+
+    $.ajax({
+        url: '/api/img',
+        type: 'get',
+        data: {},
+        success: function(response){
+            // console.log(response)
+            req = JSON.parse(response)  
+            // console.log(req, ctnShowImg);
+            callback(req, ctnShowImg);
+            
+        }
+    })
+
+
+    var callback = function(data, ctnShowImg){
+    let html =``;
+    data.forEach(dt=>{
+        html += `<div onclick="selectImg(this)" class="detail-img" data-value="${dt}" style="background-image: url('/img/${dt}');"></div>`
+    })
+    ctnShowImg.innerHTML = html;
+    }
+
+    function selectImg(el) {
+    //    console.log(ctnSelectImg)
+        let urlImg = el.getAttribute('style');
+        let nameImg = el.getAttribute('data-value');
+        let divImg = `<div class="detail-img"  data-value="${nameImg}" style="${urlImg}">
+            <button class="close" onclick="remove(this)">&#10006;</button></div>`;
+        ctnSelectImg.innerHTML += divImg;
+        ip.value += nameImg +',';
+      
+        el.remove();   
+    }
+
+    function remove(el){
+        let nameImg = el.parentElement.getAttribute('data-value')+',';
+        // console.log( nameImg);
+        ip.value = ip.value.replace(nameImg, '');
+        (el.parentElement.remove())
+    }
+
+
+
+
+
+</script>

@@ -36,6 +36,8 @@ Router::get('/dashboardnews', [NewsController::class, 'show']);
 // Router::get('/gettypenews', [NewsController::class, 'test']);
 Router::get('/apinews', [NewsController::class, 'api']);
 Router::post('/apinews', [NewsController::class, 'api']);
+Router::post('/insertnews', [NewsController::class, 'insert']);
+Router::post('/deletenews', [NewsController::class, 'delete']);
 
 
 

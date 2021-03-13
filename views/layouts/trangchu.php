@@ -44,7 +44,7 @@
     <script type="module" src='/js/cart.js'></script>
 
    
-    
+    {{/components/libimg.html}}
 </body> 
 
 </html>

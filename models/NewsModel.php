@@ -14,17 +14,18 @@ class NewsModel extends DbsModel
     public string $content = '';
     public string $img = '';
     public string $description = '';
-    public $create_at = '';
+    public  $create_at ;
     public string $class = "test";
-    public  int $news_id = 0 ; 
-    public  $category_id = "test";
+    public  $news_id  ; 
+    public string $category_id = "test";
     public string $tittle = '';
-
+    public  $top_news ;
     public string $path = "" ;
 
     
-    public function __construct()
+    public function __construct($class)
     {
+        $this->class = $class;
         $this->create_at = date('Y/m/d H:i:s');
     }
 
@@ -49,6 +50,7 @@ class NewsModel extends DbsModel
                 'content' => $this->content,
                 'news_id' => $this->news_id,
                 'path' => $this->path,
+                'top_news' => $this->top_news,
             ],
 
         ];   
@@ -60,24 +62,27 @@ class NewsModel extends DbsModel
     public function rules(): array
     {
         return [
-            'email' =>[self::RULE_RIQUIRED ],
-            'pass' =>[self::RULE_RIQUIRED, [self::RULE_MIN, 'min'=> 6], [self::RULE_MAX, 'max' => 24]],
+            'tittle' =>[self::RULE_RIQUIRED ],
+            'img' =>[self::RULE_RIQUIRED ],
+            'category_id' =>[self::RULE_RIQUIRED],
+            'description' =>[self::RULE_RIQUIRED],
+            'path' =>[self::RULE_RIQUIRED],
+            'news_id' => [self::RULE_RIQUIRED],
+            'top_news' => [self::RULE_RIQUIRED, self::RULE_INT],
         ];
     }
 
     public function labels(): array
     {
-        return [
-
-            'email' => 'Email',
-            'pass' => 'Pass'
-        ];
+       return [
+            
+       ];
     }
 
     public function attributes(): array
     {
         return [
-            'name', 'price', 'img_id', 'content', 'create_at', 'url_id'
+            'name', 'price', 'img_id', 'content', 'create_at', 'path'
         ];    
     }
 

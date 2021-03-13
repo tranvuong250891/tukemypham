@@ -34,22 +34,23 @@ abstract class DbsModel extends Model
     protected function insert($tableName,  array $data)
     {
         $attributes = array_keys($data);
-        
+        // echo $tableName;
+
+        // Test::show($data);
+
         $params = array_map(fn($attr)=> ":$attr", $attributes);
         $sql = "INSERT INTO $tableName (". implode(',', $attributes).") VALUES (". implode(',', $params). ")" ;
         $statement = $this->prepare($sql);
         foreach($attributes as $attr ){
+            //  echo $data[$attr]. PHP_EOL;
                 $statement->bindValue(":$attr", $data[$attr]);
             }
-    
+            // Test::show(($statement->execute()));
             return Main::$main->db->getId($statement);
+            
     }
 
-    public function update($id, $key = null,array $attributes = null)
-    {
-        
-        
-    }
+  
 
     public function findOne($where) 
     {
@@ -87,6 +88,9 @@ abstract class DbsModel extends Model
         return $statement->fetchAll();
     }
 
+    
+
+
     public function fetchOne()
     {
         $tableName = static::tableName();
@@ -114,6 +118,17 @@ abstract class DbsModel extends Model
         $statement->bindValue(":$id", $valueId);
         $statement->execute();
 
+    }
+
+    public function destroy($table, array $where)
+    {
+        $tableName = $table; 
+        $id = $where[0];
+        $valueId = $where[1];
+        $sql = "DELETE FROM $tableName  WHERE  $id = :$id ";
+        $statement = self::prepare($sql);
+        $statement->bindValue(":$id", $valueId);
+        $statement->execute();
     }
 
 

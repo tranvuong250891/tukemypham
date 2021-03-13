@@ -13,9 +13,9 @@ class NewsController extends Controller
 
     public function __construct(Request $request)
     {
-        $this->login = new AuthMiddleware(['api', 'delete', 'update']);
+        $this->login = new AuthMiddleware(['api', 'delete', 'update', 'insert']);
         $this->login->execute();
-        $this->newsModel = new NewsModel();
+        $this->newsModel = new NewsModel(static::class);
     }
 
     public function index()
@@ -44,18 +44,42 @@ class NewsController extends Controller
         foreach($res as $k =>$v){
             $newId = $v['news_id'];
             $res[$k]['news_id'] = $this->newsModel->getWhere('news',$newId)[0]['name'];
-           
         }
 
+        if($req['action'] === 'news_type'){
+            $res = $this->newsModel->getWhere('news',$req['id']);
+        }
 
         echo json_encode($res);
-        
+    }
 
+    public function insert(Request $request)
+    {
+        $errors = [];
+        $req = $request->getBody();
+        $res = $this->newsModel->loadData($req);
+        $this->newsModel->validate();
+        if($this->newsModel->validate() ){
+            
+            $this->newsModel->save(['news_detail', 'url_seo'], 'category_id');
+            echo json_encode('success');
+            
+        } else {
+            $this->newsModel->validate();
+            $errors =  $this->newsModel->errors;
+            
+            echo json_encode($errors);
+        };   
+    }
 
-        
+    public function delete(Request $request)
+    {
+        $req = $request->getBody();
+        $res = $this->newsModel->getWhere('news_detail',$req['id']);
+        $idUrl = $res[0]['path'];
+        $this->newsModel->destroy('url_seo', ['path', $idUrl]);
+        $this->newsModel->destroy('news_detail', ['id', $req['id']]);
 
-
-    //    $this->newsModel->save(['news_detail', 'url_seo'], 'category_id');
     }
 
 

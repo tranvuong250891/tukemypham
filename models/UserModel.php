@@ -71,8 +71,4 @@ class UserModel extends DbModel
         return parent::save();
     }
 
-
-
-
-
 }
