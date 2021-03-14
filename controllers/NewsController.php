@@ -18,12 +18,29 @@ class NewsController extends Controller
         $this->newsModel = new NewsModel(static::class);
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $req = $request->getBody();
+        if($req['field']){
+            $res = $this->newsModel->getWhere('news_detail', [$req['field'], $req['top']]);
+            echo json_encode($res);
+            return;
+        }
+
+
         $this->render([
             'tittle' => 'tin tuc'
         ], '/news/news.html');
         
+    
+    }
+
+    public function detail(Request $request)
+    {
+        
+        $this->render([
+            'tittle' => $request->getPath(),
+        ], '/news/detail.html');
     
     }
 
@@ -39,6 +56,12 @@ class NewsController extends Controller
     public function api(Request $request)
     {
         $req = $request->getBody();
+        if($req['field'] === 'top_news') {
+            
+            $res = $this->newsModel->getWhere('news_detail', [$req['field'], $req['top']]);
+            echo json_encode($res);
+            return ;
+        }
         
         $res = $this->newsModel->getWhere($req['id']);
         foreach($res as $k =>$v){
@@ -49,6 +72,9 @@ class NewsController extends Controller
         if($req['action'] === 'news_type'){
             $res = $this->newsModel->getWhere('news',$req['id']);
         }
+
+        
+
 
         echo json_encode($res);
     }
@@ -79,6 +105,7 @@ class NewsController extends Controller
         $idUrl = $res[0]['path'];
         $this->newsModel->destroy('url_seo', ['path', $idUrl]);
         $this->newsModel->destroy('news_detail', ['id', $req['id']]);
+        
 
     }
 

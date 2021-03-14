@@ -41,18 +41,31 @@ function renderNewsDetail(req){
                     <div class="img">anh dai dien</div>
                     <div class="description">mo ta</div>
                     <div class="tittle">tieu de</div>
+                    <div class="top_news">top news</div>
                     <div class="url">duong dan</div>
                     <div class="type_news">loai tin</div>
                     <div class="date">ngay tao</div>
                     <div class="action">xoa</div>
                 </div>`;
+    let htmlImgs = ``;
     req.forEach((news, id) => {
+        
+        let imgs = news.img.split(",")
+        imgs.forEach(img=>{
+            
+            if(img.substr(-4)==='.jpg'){
+
+                htmlImgs =  `<div class="img_detail" style="background-image: url('/img/${img}');"></div>`
+            }
+        })
+        
         html += `
         <div class="show-news">
             <div class="number">${id+1}</div>
-            <div class="img">${news.img}</div>
+            <div class="img"> ${htmlImgs}</div>
             <div class="description">${news.description}</div>
             <div class="tittle">${news.tittle}</div>
+            <div class="top_news">${news.top_news}</div>
             <div class="url">${news.path}</div>
             <div class="type_news">${news.news_id}</div>
             <div class="date">${news.create_at}</div>

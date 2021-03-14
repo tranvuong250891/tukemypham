@@ -6,6 +6,8 @@ use main\core\Request;
 use main\core\Response;
 use main\core\Test;
 use main\models\ProductModel;
+use main\models\ProductsModel;
+
 use main\core\middlewares\AuthMiddleware;
 use main\models\SeoModel;
 
@@ -20,10 +22,19 @@ class ProductController extends Controller
         $this->id = $request->getBody()['id'] ?? '';
         $this->model = new ProductModel();
         $this->seoModel = new SeoModel(static::class);
+        $this->productsModel = new ProductsModel(static::class);
     }
 
-    public function index()
+    public function index(Request $request)
     {
+        $req = $request->getBody();
+        if($req['field']){
+            $res = $this->productsModel->getWhere(false, false, 3 );
+            echo json_encode($res);
+            return;
+
+        }
+
         echo json_encode($this->model->getAll());
     }
 

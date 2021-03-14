@@ -75,15 +75,16 @@ abstract class DbsModel extends Model
 
 
 
-    public function getWhere($table= false,$where = false) 
+    public function getWhere($table= false,$where = false, int $limit = null , int $offset= null) 
     {
-
+        $limit = is_numeric($limit) ? $limit : 10;
+        $offset = is_numeric($offset) ? $offset : 0;
         $tableName = $table ? $table : static::$table;
-        $sql = $where ? "WHERE id = ?" : "" ;
+        $sql = $where ? "WHERE $where[0] = ?" : "" ;
         
-         $sql = "SELECT * FROM $tableName $sql ORDER BY 'create_at' ASC";
+        $sql = "SELECT * FROM $tableName $sql ORDER BY 'create_at' ASC LIMIT $limit OFFSET $offset";
         $statement = self::prepare($sql);
-        $statement->execute([$where]);
+        $statement->execute([$where[1]]);
         
         return $statement->fetchAll();
     }

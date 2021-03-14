@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/style/reset.css">
     <link rel="stylesheet" href="/style/lib.css">
-   <link rel="stylesheet" href="/style/order.css">
+    <link rel="stylesheet" href="/style/order.css">
     <link rel="stylesheet" href="/style/login.css">
     <link rel="stylesheet" href="/style/navbar.css">
     <link rel="stylesheet" href="/style/menu.css">
@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/style/service.css">
     <link rel="stylesheet" href="/lib/fontawesome-free-5.15.2-web/css/all.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <title><?php echo $title; ?></title>
+    <title><?php echo $tittle; ?></title>
 </head>
 <body>
   

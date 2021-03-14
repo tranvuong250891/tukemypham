@@ -29,9 +29,14 @@ Router::get('/insertproduct', [ProductController::class, 'insert']);
 Router::get('/deleteproduct', [ProductController::class, 'delete']);
 Router::post('/updateproduct', [ProductController::class, 'update']);
 Router::get('/editproduct', [ProductController::class, 'show']);
+Router::get('/getapiproduct', [ProductController::class, 'index']);
+
+
 
 //NEWS
 Router::get('/news', [NewsController::class, 'index']);
+Router::get('/getapinews', [NewsController::class, 'index']);
+
 Router::get('/dashboardnews', [NewsController::class, 'show']);
 // Router::get('/gettypenews', [NewsController::class, 'test']);
 Router::get('/apinews', [NewsController::class, 'api']);

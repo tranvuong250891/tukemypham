@@ -49,6 +49,9 @@ class ProductModel extends DbModel
         ];    
     }
 
+
+    public static string $table = "products";
+
     public function getAll()
     {
         $products = parent::getAll();
