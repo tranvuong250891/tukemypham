@@ -12,6 +12,7 @@ use main\core\Main;
 abstract class HandleRequest
 {
     public string $path;
+    public string $namePath;
     public string $pathCli;
     public string $handledPath;
     public $urlSeo = false;
@@ -26,6 +27,7 @@ abstract class HandleRequest
         $this->setPath();
         $this->getPath();
         $path = substr($this->getPath(), 1) ;
+        $this->namePath = $path;
         $this->urlSeo =  Main::$main->db->search('url_seo',['path' => $path]);
        
         

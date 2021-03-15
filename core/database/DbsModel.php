@@ -75,7 +75,7 @@ abstract class DbsModel extends Model
 
 
 
-    public function getWhere($table= false,$where = false, int $limit = null , int $offset= null) 
+    public function getWhere($table= false, $where = false, int $limit = null , int $offset= null) 
     {
         $limit = is_numeric($limit) ? $limit : 10;
         $offset = is_numeric($offset) ? $offset : 0;

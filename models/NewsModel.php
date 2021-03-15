@@ -47,7 +47,7 @@ class NewsModel extends DbsModel
                 'create_at' => $this->create_at,
                 'img' => $this->img,
                 'description' => $this->description,
-                'content' => $this->content,
+                'content' => html_entity_decode($this->content),
                 'news_id' => $this->news_id,
                 'path' => $this->path,
                 'top_news' => $this->top_news,

@@ -17,6 +17,7 @@ function start() {
         success: function(response){
             // console.log(response)
             req = JSON.parse(response)  
+            console.log(req)
             renderNewsDetail(req)
         }
     });

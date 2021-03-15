@@ -14,7 +14,7 @@ class NewsController extends Controller
     public function __construct(Request $request)
     {
         $this->login = new AuthMiddleware(['api', 'delete', 'update', 'insert']);
-        $this->login->execute();
+        $this->login->adminDashboard();
         $this->newsModel = new NewsModel(static::class);
     }
 
@@ -27,6 +27,7 @@ class NewsController extends Controller
             return;
         }
 
+        
 
         $this->render([
             'tittle' => 'tin tuc'
@@ -37,11 +38,23 @@ class NewsController extends Controller
 
     public function detail(Request $request)
     {
+        if($request->isGet()){
+            $this->render([
+                'tittle' => $request->getPath(),
+            ], '/news/detail.html');
+            return;
+        }
+
+        if($request->isPost()){
+            $res = $this->newsModel->getWhere('news_detail', ['path', $request->namePath]);
+            $res[0]['content'] = htmlspecialchars_decode($res[0]['content']);
+            echo json_encode($res);
+            return;
+        }
         
-        $this->render([
-            'tittle' => $request->getPath(),
-        ], '/news/detail.html');
-    
+
+        
+
     }
 
     public function show(Request $request)
@@ -66,7 +79,7 @@ class NewsController extends Controller
         $res = $this->newsModel->getWhere($req['id']);
         foreach($res as $k =>$v){
             $newId = $v['news_id'];
-            $res[$k]['news_id'] = $this->newsModel->getWhere('news',$newId)[0]['name'];
+            $res[$k]['news_id'] = $this->newsModel->getWhere('news',['id',$newId])[0]['name'];
         }
 
         if($req['action'] === 'news_type'){
